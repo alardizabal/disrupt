@@ -12,6 +12,7 @@
 		07F4762B1AF5677300808ECD /* DTProjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F4762A1AF5677300808ECD /* DTProjectManager.m */; };
 		07F4762E1AF569CD00808ECD /* DTTeamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F4762D1AF569CD00808ECD /* DTTeamManager.m */; };
 		07F476311AF56ECF00808ECD /* DTTeamCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F476301AF56ECF00808ECD /* DTTeamCollectionViewCell.m */; };
+		07F476341AF573D500808ECD /* DTTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F476331AF573D500808ECD /* DTTask.m */; };
 		556A7AC62C8C8C27D0B36184 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3013587BEF7AF8D2145804 /* libPods.a */; };
 		CAE399121AF547B1004D3E89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399111AF547B1004D3E89 /* main.m */; };
 		CAE399151AF547B1004D3E89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399141AF547B1004D3E89 /* AppDelegate.m */; };
@@ -40,6 +41,8 @@
 		07F4762D1AF569CD00808ECD /* DTTeamManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTeamManager.m; path = Models/DTTeamManager.m; sourceTree = "<group>"; };
 		07F4762F1AF56ECF00808ECD /* DTTeamCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTeamCollectionViewCell.h; path = Views/Cells/DTTeamCollectionViewCell.h; sourceTree = "<group>"; };
 		07F476301AF56ECF00808ECD /* DTTeamCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTeamCollectionViewCell.m; path = Views/Cells/DTTeamCollectionViewCell.m; sourceTree = "<group>"; };
+		07F476321AF573D500808ECD /* DTTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTask.h; path = Models/DTTask.h; sourceTree = "<group>"; };
+		07F476331AF573D500808ECD /* DTTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTask.m; path = Models/DTTask.m; sourceTree = "<group>"; };
 		AA3013587BEF7AF8D2145804 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE3990C1AF547B1004D3E89 /* Disrupt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Disrupt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE399101AF547B1004D3E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -108,6 +111,8 @@
 				07F4762A1AF5677300808ECD /* DTProjectManager.m */,
 				07F4762C1AF569CD00808ECD /* DTTeamManager.h */,
 				07F4762D1AF569CD00808ECD /* DTTeamManager.m */,
+				07F476321AF573D500808ECD /* DTTask.h */,
+				07F476331AF573D500808ECD /* DTTask.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 				07F4762B1AF5677300808ECD /* DTProjectManager.m in Sources */,
 				07F476271AF550CB00808ECD /* DTTaskTableViewCell.m in Sources */,
 				07F4762E1AF569CD00808ECD /* DTTeamManager.m in Sources */,
+				07F476341AF573D500808ECD /* DTTask.m in Sources */,
 				07F476211AF5507600808ECD /* DTCreateProjectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

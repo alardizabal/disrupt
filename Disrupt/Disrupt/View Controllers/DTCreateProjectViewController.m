@@ -11,6 +11,7 @@
 #import "DTTeamCollectionViewCell.h"
 #import "DTProjectManager.h"
 #import "DTTeamManager.h"
+#import "DTTask.h"
 
 static NSString * kDTTaskReuseIdentifier = @"dt.reuseId.task";
 static NSString * kDTTeamReuseIdentifier = @"dt.reuseId.team";
@@ -21,8 +22,8 @@ static CGFloat const kDTTaskCellHeight = 80.0;
 @property (nonatomic, strong) UITableView *taskTableView;
 @property (nonatomic, strong) UICollectionView *teamCollectionView;
 
-@property (nonatomic, strong) DTProjectManager *taskModel;
-@property (nonatomic, strong) DTTeamManager *teamModel;
+@property (nonatomic, strong) DTProjectManager *projectManager;
+@property (nonatomic, strong) DTTeamManager *teamManager;
 
 @property (nonatomic) NSInteger taskCount;
 
@@ -44,7 +45,8 @@ static CGFloat const kDTTaskCellHeight = 80.0;
 #pragma mark - Layout
 - (void)layoutSubviews {
   CGFloat fullWidth = CGRectGetWidth(self.view.bounds),
-  horizontalMargin = 20.0;
+  horizontalMargin = 20.0,
+  verticalMargin = 20.0;
   
   CGFloat x = horizontalMargin, y = 100.0, w = fullWidth - 2 * horizontalMargin;
   
@@ -54,7 +56,7 @@ static CGFloat const kDTTaskCellHeight = 80.0;
   
   self.taskTableView.frame = CGRectMake(x, y, w, h);
   
-  h = w;
+  x += horizontalMargin, y += verticalMargin, w -= 2 * horizontalMargin, h = w;
   self.teamCollectionView.frame = CGRectMake(x, y, w, h);
 }
 
@@ -83,19 +85,19 @@ static CGFloat const kDTTaskCellHeight = 80.0;
   return _teamCollectionView;
 }
 
-- (DTProjectManager *)taskModel {
-  if (_taskModel == nil) {
-    _taskModel = [DTProjectManager sharedManager];
+- (DTProjectManager *)projectManager {
+  if (_projectManager == nil) {
+    _projectManager = [DTProjectManager sharedManager];
   }
-  return _taskModel;
+  return _projectManager;
 }
 
-- (DTTeamManager *)teamModel {
-  if (_teamModel == nil) {
-    _teamModel = [DTTeamManager sharedManager];
-    _teamModel.teamMembers = @[@"Al", @"Danny", @"Kevin", @"Rich"];
+- (DTTeamManager *)teamManager {
+  if (_teamManager == nil) {
+    _teamManager = [DTTeamManager sharedManager];
+    _teamManager.teamMembers = @[@"Al", @"Danny", @"Kevin", @"Rich"];
   }
-  return _teamModel;
+  return _teamManager;
 }
 
 #pragma mark - UITableViewDataSource
@@ -125,6 +127,11 @@ static CGFloat const kDTTaskCellHeight = 80.0;
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
   self.teamCollectionView.hidden = NO;
   if (textField.text.length > 0) {
+    
+    DTTask *task = [DTTask new];
+    task.taskDescription = textField.text;
+    [self.projectManager.tasks addObject:task];
+    
     self.taskCount ++;
     [self layoutSubviews];
     [self.taskTableView reloadData];
@@ -138,7 +145,7 @@ static CGFloat const kDTTaskCellHeight = 80.0;
 
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
-  return [self.teamModel.teamMembers count];
+  return [self.teamManager.teamMembers count];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
@@ -147,7 +154,7 @@ static CGFloat const kDTTaskCellHeight = 80.0;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   DTTeamCollectionViewCell *cell = (DTTeamCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kDTTeamReuseIdentifier forIndexPath:indexPath];
-  cell.nameLabel.text = self.teamModel.teamMembers[indexPath.row];
+  cell.nameLabel.text = self.teamManager.teamMembers[indexPath.row];
   return cell;
 }
 
@@ -157,7 +164,7 @@ static CGFloat const kDTTaskCellHeight = 80.0;
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-  CGFloat size = CGRectGetWidth(self.teamCollectionView.frame) / sqrt([self.teamModel.teamMembers count]);
+  CGFloat size = CGRectGetWidth(self.teamCollectionView.frame) / sqrt([self.teamManager.teamMembers count]);
   return CGSizeMake(size - 20.0, size - 20.0);
 }
 
