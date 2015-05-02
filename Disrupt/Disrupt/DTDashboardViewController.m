@@ -64,8 +64,8 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 }
 
 - (void) addRightNavigationButton {
-  UIImage *settingsImage = [UIImage imageNamed:@"icon_plus"];
-  UIImage *settingsImagePressed = [UIImage imageNamed:@"icon_plus"];
+  UIImage *settingsImage = [UIImage imageNamed:@"icon-pluscircle-normal"];
+  UIImage *settingsImagePressed = [UIImage imageNamed:@"icon-pluscircle-selected"];
   UIButton *settingsButton = [UIButton new];
   [settingsButton setImage:settingsImage forState:UIControlStateNormal];
   [settingsButton setImage:settingsImagePressed forState:UIControlStateHighlighted];

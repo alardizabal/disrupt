@@ -46,6 +46,10 @@ static CGFloat const kDTTaskCellHeight = 80.0;
   [self.view setNeedsLayout];
 }
 
+- (void)layoutSubviews {
+  
+}
+
 #pragma mark - Layout
 - (void)viewWillLayoutSubviews {
   CGFloat fullWidth = CGRectGetWidth(self.view.bounds),
