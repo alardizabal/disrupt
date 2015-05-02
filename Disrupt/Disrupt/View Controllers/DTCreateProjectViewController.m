@@ -55,7 +55,6 @@ static CGFloat const kDTTaskCellHeight = 80.0;
   CGFloat x = horizontalMargin, y = 100.0, w = fullWidth - 2 * horizontalMargin;
   
   CGFloat fullHeight = kDTTaskCellHeight * (1 + self.taskCount);
-  CGFloat maxHeight = 240.0;
   CGFloat h = fullHeight;
   
   self.taskTableView.frame = CGRectMake(x, y, w, h);
@@ -100,7 +99,7 @@ static CGFloat const kDTTaskCellHeight = 80.0;
 - (DTTeamManager *)teamManager {
   if (_teamManager == nil) {
     _teamManager = [DTTeamManager sharedManager];
-    _teamManager.teamMembers = @[@"Al", @"Danny", @"Kevin", @"Rich"];
+    _teamManager.teamMembers = [[NSMutableArray alloc] initWithArray:@[@"Al", @"Danny", @"Kevin", @"Rich"]];
   }
   return _teamManager;
 }
@@ -126,7 +125,7 @@ static CGFloat const kDTTaskCellHeight = 80.0;
     if (taskNumber < [self.projectManager.tasks count]) {
       DTTask *task = self.projectManager.tasks[taskNumber];
       cell.taskTextField.text = task.taskDescription;
-      cell.teamMemberLabel.text = task.teamMember;
+      cell.teamMemberLabel.text = task.assignedUser.userName;
     }
   }
   return cell;
@@ -173,7 +172,7 @@ static CGFloat const kDTTaskCellHeight = 80.0;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   DTTask *task = [self.projectManager.tasks lastObject];
   DTTeamCollectionViewCell *cell = (DTTeamCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-  task.teamMember = cell.nameLabel.text;
+  task.assignedUser.userName = cell.nameLabel.text;
   self.teamCollectionView.hidden = YES;
   [self.taskTableView reloadData];
 }
