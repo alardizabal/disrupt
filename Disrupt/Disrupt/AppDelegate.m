@@ -23,7 +23,7 @@
   DTCreateProjectViewController *createProjectViewController = [DTCreateProjectViewController new];
   UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:createProjectViewController];
   
-  self.window.rootViewController = navController;
+  self.window.rootViewController = createProjectViewController;
   
   return YES;
 }
