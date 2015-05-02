@@ -9,11 +9,8 @@
 /* Begin PBXBuildFile section */
 		CAE399121AF547B1004D3E89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399111AF547B1004D3E89 /* main.m */; };
 		CAE399151AF547B1004D3E89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399141AF547B1004D3E89 /* AppDelegate.m */; };
-		CAE399181AF547B1004D3E89 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399171AF547B1004D3E89 /* ViewController.m */; };
 		CAE3991D1AF547B1004D3E89 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE3991C1AF547B1004D3E89 /* Images.xcassets */; };
-		CAE399201AF547B1004D3E89 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAE3991E1AF547B1004D3E89 /* LaunchScreen.xib */; };
 		CAE3992C1AF547B1004D3E89 /* DisruptTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE3992B1AF547B1004D3E89 /* DisruptTests.m */; };
-		CAE399391AF54ED3004D3E89 /* DTDashboardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399381AF54ED3004D3E89 /* DTDashboardCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,15 +29,10 @@
 		CAE399111AF547B1004D3E89 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CAE399131AF547B1004D3E89 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CAE399141AF547B1004D3E89 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CAE399161AF547B1004D3E89 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CAE399171AF547B1004D3E89 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CAE3991C1AF547B1004D3E89 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		CAE3991F1AF547B1004D3E89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CAE399251AF547B1004D3E89 /* DisruptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DisruptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE3992A1AF547B1004D3E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAE3992B1AF547B1004D3E89 /* DisruptTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisruptTests.m; sourceTree = "<group>"; };
-		CAE399371AF54ED3004D3E89 /* DTDashboardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDashboardCollectionViewCell.h; sourceTree = "<group>"; };
-		CAE399381AF54ED3004D3E89 /* DTDashboardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDashboardCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +53,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07F4761E1AF54F6400808ECD /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		CAE399031AF547B1004D3E89 = {
 			isa = PBXGroup;
 			children = (
@@ -82,15 +81,8 @@
 		CAE3990E1AF547B1004D3E89 /* Disrupt */ = {
 			isa = PBXGroup;
 			children = (
-				CAE399131AF547B1004D3E89 /* AppDelegate.h */,
-				CAE399141AF547B1004D3E89 /* AppDelegate.m */,
-				CAE399161AF547B1004D3E89 /* ViewController.h */,
-				CAE399171AF547B1004D3E89 /* ViewController.m */,
-				CAE3991C1AF547B1004D3E89 /* Images.xcassets */,
-				CAE3991E1AF547B1004D3E89 /* LaunchScreen.xib */,
+				07F4761E1AF54F6400808ECD /* View Controllers */,
 				CAE3990F1AF547B1004D3E89 /* Supporting Files */,
-				CAE399371AF54ED3004D3E89 /* DTDashboardCollectionViewCell.h */,
-				CAE399381AF54ED3004D3E89 /* DTDashboardCollectionViewCell.m */,
 			);
 			path = Disrupt;
 			sourceTree = "<group>";
@@ -98,6 +90,9 @@
 		CAE3990F1AF547B1004D3E89 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CAE399131AF547B1004D3E89 /* AppDelegate.h */,
+				CAE399141AF547B1004D3E89 /* AppDelegate.m */,
+				CAE3991C1AF547B1004D3E89 /* Images.xcassets */,
 				CAE399101AF547B1004D3E89 /* Info.plist */,
 				CAE399111AF547B1004D3E89 /* main.m */,
 			);
@@ -201,7 +196,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAE399201AF547B1004D3E89 /* LaunchScreen.xib in Resources */,
 				CAE3991D1AF547B1004D3E89 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,8 +214,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAE399181AF547B1004D3E89 /* ViewController.m in Sources */,
-				CAE399391AF54ED3004D3E89 /* DTDashboardCollectionViewCell.m in Sources */,
 				CAE399151AF547B1004D3E89 /* AppDelegate.m in Sources */,
 				CAE399121AF547B1004D3E89 /* main.m in Sources */,
 			);
@@ -244,17 +236,6 @@
 			targetProxy = CAE399261AF547B1004D3E89 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		CAE3991E1AF547B1004D3E89 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CAE3991F1AF547B1004D3E89 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CAE3992D1AF547B1004D3E89 /* Debug */ = {
@@ -410,6 +391,7 @@
 				CAE399311AF547B1004D3E89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CAE399321AF547B1004D3E89 /* Build configuration list for PBXNativeTarget "DisruptTests" */ = {
 			isa = XCConfigurationList;
@@ -418,6 +400,7 @@
 				CAE399341AF547B1004D3E89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
