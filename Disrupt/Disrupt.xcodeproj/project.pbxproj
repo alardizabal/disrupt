@@ -14,6 +14,8 @@
 		CAE399151AF547B1004D3E89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399141AF547B1004D3E89 /* AppDelegate.m */; };
 		CAE3991D1AF547B1004D3E89 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE3991C1AF547B1004D3E89 /* Images.xcassets */; };
 		CAE3992C1AF547B1004D3E89 /* DisruptTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE3992B1AF547B1004D3E89 /* DisruptTests.m */; };
+		CAE399451AF56036004D3E89 /* DTDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399441AF56036004D3E89 /* DTDashboardViewController.m */; };
+		CAE399481AF56046004D3E89 /* DTDashboardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399471AF56046004D3E89 /* DTDashboardCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,10 @@
 		CAE399251AF547B1004D3E89 /* DisruptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DisruptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE3992A1AF547B1004D3E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAE3992B1AF547B1004D3E89 /* DisruptTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisruptTests.m; sourceTree = "<group>"; };
+		CAE399431AF56036004D3E89 /* DTDashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDashboardViewController.h; sourceTree = "<group>"; };
+		CAE399441AF56036004D3E89 /* DTDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDashboardViewController.m; sourceTree = "<group>"; };
+		CAE399461AF56046004D3E89 /* DTDashboardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDashboardCollectionViewCell.h; sourceTree = "<group>"; };
+		CAE399471AF56046004D3E89 /* DTDashboardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDashboardCollectionViewCell.m; sourceTree = "<group>"; };
 		D85421A1DE7B49872597F7DD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DDACA5207A533CA5004C58AD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +73,8 @@
 		07F4761E1AF54F6400808ECD /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CAE399431AF56036004D3E89 /* DTDashboardViewController.h */,
+				CAE399441AF56036004D3E89 /* DTDashboardViewController.m */,
 				07F4761F1AF5507600808ECD /* DTCreateProjectViewController.h */,
 				07F476201AF5507600808ECD /* DTCreateProjectViewController.m */,
 			);
@@ -84,6 +92,8 @@
 		07F476231AF550A900808ECD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				CAE399461AF56046004D3E89 /* DTDashboardCollectionViewCell.h */,
+				CAE399471AF56046004D3E89 /* DTDashboardCollectionViewCell.m */,
 				07F476251AF550CB00808ECD /* DTTaskTableViewCell.h */,
 				07F476261AF550CB00808ECD /* DTTaskTableViewCell.m */,
 			);
@@ -303,7 +313,9 @@
 				CAE399151AF547B1004D3E89 /* AppDelegate.m in Sources */,
 				CAE399121AF547B1004D3E89 /* main.m in Sources */,
 				07F476271AF550CB00808ECD /* DTTaskTableViewCell.m in Sources */,
+				CAE399481AF56046004D3E89 /* DTDashboardCollectionViewCell.m in Sources */,
 				07F476211AF5507600808ECD /* DTCreateProjectViewController.m in Sources */,
+				CAE399451AF56036004D3E89 /* DTDashboardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
