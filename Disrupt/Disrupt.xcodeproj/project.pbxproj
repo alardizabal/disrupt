@@ -13,6 +13,7 @@
 		CAE3991D1AF547B1004D3E89 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE3991C1AF547B1004D3E89 /* Images.xcassets */; };
 		CAE399201AF547B1004D3E89 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAE3991E1AF547B1004D3E89 /* LaunchScreen.xib */; };
 		CAE3992C1AF547B1004D3E89 /* DisruptTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE3992B1AF547B1004D3E89 /* DisruptTests.m */; };
+		CAE399391AF54ED3004D3E89 /* DTDashboardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399381AF54ED3004D3E89 /* DTDashboardCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 		CAE399251AF547B1004D3E89 /* DisruptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DisruptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE3992A1AF547B1004D3E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAE3992B1AF547B1004D3E89 /* DisruptTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisruptTests.m; sourceTree = "<group>"; };
+		CAE399371AF54ED3004D3E89 /* DTDashboardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDashboardCollectionViewCell.h; sourceTree = "<group>"; };
+		CAE399381AF54ED3004D3E89 /* DTDashboardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDashboardCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				CAE3991C1AF547B1004D3E89 /* Images.xcassets */,
 				CAE3991E1AF547B1004D3E89 /* LaunchScreen.xib */,
 				CAE3990F1AF547B1004D3E89 /* Supporting Files */,
+				CAE399371AF54ED3004D3E89 /* DTDashboardCollectionViewCell.h */,
+				CAE399381AF54ED3004D3E89 /* DTDashboardCollectionViewCell.m */,
 			);
 			path = Disrupt;
 			sourceTree = "<group>";
@@ -216,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAE399181AF547B1004D3E89 /* ViewController.m in Sources */,
+				CAE399391AF54ED3004D3E89 /* DTDashboardCollectionViewCell.m in Sources */,
 				CAE399151AF547B1004D3E89 /* AppDelegate.m in Sources */,
 				CAE399121AF547B1004D3E89 /* main.m in Sources */,
 			);

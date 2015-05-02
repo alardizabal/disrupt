@@ -1,5 +1,5 @@
 //
-//  DTDashboardCollectionViewCell.h
+//  DTDashboardCollectionViewCell.m
 //  Disrupt
 //
 //  Created by Kevin Gray on 5/2/15.
@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DTDashboardCollectionViewCell : NSObject
+@import UIKit;
+
+@interface DTDashboardCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic, strong) NSString *projectName;
 
 @end

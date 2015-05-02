@@ -10,4 +10,27 @@
 
 @implementation DTDashboardCollectionViewCell
 
+@interface DTDashboardCollectionViewCell ()
+@property (nonatomic, strong) UILabel *projectNameLabel;
+@end
+
+#pragma mark - View Life Cycle
+
+- (instancetype)initWithFrame:(CGRect)frame {
+  self = [super initWithFrame:frame];
+  return self;
+}
+
+- (void)prepareForReuse {
+  [super prepareForReuse];
+}
+
+#pragma mark - Layout
+
+- (void)layoutSubviews {
+  [super layoutSubviews];
+}
+
+#pragma mark - Lazy Init
+
 @end
