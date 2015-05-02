@@ -9,15 +9,16 @@
 /* Begin PBXBuildFile section */
 		07F476211AF5507600808ECD /* DTCreateProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F476201AF5507600808ECD /* DTCreateProjectViewController.m */; };
 		07F476271AF550CB00808ECD /* DTTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F476261AF550CB00808ECD /* DTTaskTableViewCell.m */; };
-		15A6C4061AF557A8003C7B1D /* DTProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A6C4051AF557A8003C7B1D /* DTProjectDetailViewController.m */; };
-		15A6C40B1AF557B6003C7B1D /* DTDashboardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A6C4081AF557B6003C7B1D /* DTDashboardCollectionViewCell.m */; };
-		15A6C40C1AF557B6003C7B1D /* DTProjectDetailCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A6C40A1AF557B6003C7B1D /* DTProjectDetailCollectionViewCell.m */; };
-		15FDDDB11AF56FD100B0BA7B /* DTProjectDetailSectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FDDDB01AF56FD100B0BA7B /* DTProjectDetailSectionReusableView.m */; };
+		15FDDDB61AF574F800B0BA7B /* DTProjectDetailCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FDDDB31AF574F800B0BA7B /* DTProjectDetailCollectionViewCell.m */; };
+		15FDDDB71AF574F800B0BA7B /* DTProjectDetailSectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FDDDB51AF574F800B0BA7B /* DTProjectDetailSectionReusableView.m */; };
+		15FDDDBA1AF5750400B0BA7B /* DTProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FDDDB91AF5750400B0BA7B /* DTProjectDetailViewController.m */; };
 		556A7AC62C8C8C27D0B36184 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3013587BEF7AF8D2145804 /* libPods.a */; };
 		CAE399121AF547B1004D3E89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399111AF547B1004D3E89 /* main.m */; };
 		CAE399151AF547B1004D3E89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399141AF547B1004D3E89 /* AppDelegate.m */; };
 		CAE3991D1AF547B1004D3E89 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE3991C1AF547B1004D3E89 /* Images.xcassets */; };
 		CAE3992C1AF547B1004D3E89 /* DisruptTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE3992B1AF547B1004D3E89 /* DisruptTests.m */; };
+		CAE399451AF56036004D3E89 /* DTDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399441AF56036004D3E89 /* DTDashboardViewController.m */; };
+		CAE399481AF56046004D3E89 /* DTDashboardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399471AF56046004D3E89 /* DTDashboardCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,14 +36,12 @@
 		07F476201AF5507600808ECD /* DTCreateProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTCreateProjectViewController.m; path = "View Controllers/DTCreateProjectViewController.m"; sourceTree = "<group>"; };
 		07F476251AF550CB00808ECD /* DTTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTaskTableViewCell.h; path = Views/Cells/DTTaskTableViewCell.h; sourceTree = "<group>"; };
 		07F476261AF550CB00808ECD /* DTTaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTaskTableViewCell.m; path = Views/Cells/DTTaskTableViewCell.m; sourceTree = "<group>"; };
-		15A6C4041AF557A8003C7B1D /* DTProjectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTProjectDetailViewController.h; sourceTree = "<group>"; };
-		15A6C4051AF557A8003C7B1D /* DTProjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTProjectDetailViewController.m; sourceTree = "<group>"; };
-		15A6C4071AF557B6003C7B1D /* DTDashboardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDashboardCollectionViewCell.h; sourceTree = "<group>"; };
-		15A6C4081AF557B6003C7B1D /* DTDashboardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDashboardCollectionViewCell.m; sourceTree = "<group>"; };
-		15A6C4091AF557B6003C7B1D /* DTProjectDetailCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTProjectDetailCollectionViewCell.h; sourceTree = "<group>"; };
-		15A6C40A1AF557B6003C7B1D /* DTProjectDetailCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTProjectDetailCollectionViewCell.m; sourceTree = "<group>"; };
-		15FDDDAF1AF56FD100B0BA7B /* DTProjectDetailSectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTProjectDetailSectionReusableView.h; sourceTree = "<group>"; };
-		15FDDDB01AF56FD100B0BA7B /* DTProjectDetailSectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTProjectDetailSectionReusableView.m; sourceTree = "<group>"; };
+		15FDDDB21AF574F800B0BA7B /* DTProjectDetailCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTProjectDetailCollectionViewCell.h; sourceTree = "<group>"; };
+		15FDDDB31AF574F800B0BA7B /* DTProjectDetailCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTProjectDetailCollectionViewCell.m; sourceTree = "<group>"; };
+		15FDDDB41AF574F800B0BA7B /* DTProjectDetailSectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTProjectDetailSectionReusableView.h; sourceTree = "<group>"; };
+		15FDDDB51AF574F800B0BA7B /* DTProjectDetailSectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTProjectDetailSectionReusableView.m; sourceTree = "<group>"; };
+		15FDDDB81AF5750400B0BA7B /* DTProjectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTProjectDetailViewController.h; sourceTree = "<group>"; };
+		15FDDDB91AF5750400B0BA7B /* DTProjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTProjectDetailViewController.m; sourceTree = "<group>"; };
 		AA3013587BEF7AF8D2145804 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE3990C1AF547B1004D3E89 /* Disrupt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Disrupt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE399101AF547B1004D3E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,6 +52,10 @@
 		CAE399251AF547B1004D3E89 /* DisruptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DisruptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE3992A1AF547B1004D3E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAE3992B1AF547B1004D3E89 /* DisruptTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisruptTests.m; sourceTree = "<group>"; };
+		CAE399431AF56036004D3E89 /* DTDashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDashboardViewController.h; sourceTree = "<group>"; };
+		CAE399441AF56036004D3E89 /* DTDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDashboardViewController.m; sourceTree = "<group>"; };
+		CAE399461AF56046004D3E89 /* DTDashboardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDashboardCollectionViewCell.h; sourceTree = "<group>"; };
+		CAE399471AF56046004D3E89 /* DTDashboardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDashboardCollectionViewCell.m; sourceTree = "<group>"; };
 		D85421A1DE7B49872597F7DD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DDACA5207A533CA5004C58AD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,8 +82,10 @@
 		07F4761E1AF54F6400808ECD /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				15A6C4041AF557A8003C7B1D /* DTProjectDetailViewController.h */,
-				15A6C4051AF557A8003C7B1D /* DTProjectDetailViewController.m */,
+				15FDDDB81AF5750400B0BA7B /* DTProjectDetailViewController.h */,
+				15FDDDB91AF5750400B0BA7B /* DTProjectDetailViewController.m */,
+				CAE399431AF56036004D3E89 /* DTDashboardViewController.h */,
+				CAE399441AF56036004D3E89 /* DTDashboardViewController.m */,
 				07F4761F1AF5507600808ECD /* DTCreateProjectViewController.h */,
 				07F476201AF5507600808ECD /* DTCreateProjectViewController.m */,
 			);
@@ -98,12 +103,12 @@
 		07F476231AF550A900808ECD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				15A6C4071AF557B6003C7B1D /* DTDashboardCollectionViewCell.h */,
-				15A6C4081AF557B6003C7B1D /* DTDashboardCollectionViewCell.m */,
-				15A6C4091AF557B6003C7B1D /* DTProjectDetailCollectionViewCell.h */,
-				15A6C40A1AF557B6003C7B1D /* DTProjectDetailCollectionViewCell.m */,
-				15FDDDAF1AF56FD100B0BA7B /* DTProjectDetailSectionReusableView.h */,
-				15FDDDB01AF56FD100B0BA7B /* DTProjectDetailSectionReusableView.m */,
+				15FDDDB21AF574F800B0BA7B /* DTProjectDetailCollectionViewCell.h */,
+				15FDDDB31AF574F800B0BA7B /* DTProjectDetailCollectionViewCell.m */,
+				15FDDDB41AF574F800B0BA7B /* DTProjectDetailSectionReusableView.h */,
+				15FDDDB51AF574F800B0BA7B /* DTProjectDetailSectionReusableView.m */,
+				CAE399461AF56046004D3E89 /* DTDashboardCollectionViewCell.h */,
+				CAE399471AF56046004D3E89 /* DTDashboardCollectionViewCell.m */,
 				07F476251AF550CB00808ECD /* DTTaskTableViewCell.h */,
 				07F476261AF550CB00808ECD /* DTTaskTableViewCell.m */,
 			);
@@ -320,14 +325,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15FDDDBA1AF5750400B0BA7B /* DTProjectDetailViewController.m in Sources */,
 				CAE399151AF547B1004D3E89 /* AppDelegate.m in Sources */,
-				15A6C4061AF557A8003C7B1D /* DTProjectDetailViewController.m in Sources */,
 				CAE399121AF547B1004D3E89 /* main.m in Sources */,
-				15A6C40B1AF557B6003C7B1D /* DTDashboardCollectionViewCell.m in Sources */,
-				15FDDDB11AF56FD100B0BA7B /* DTProjectDetailSectionReusableView.m in Sources */,
-				15A6C40C1AF557B6003C7B1D /* DTProjectDetailCollectionViewCell.m in Sources */,
 				07F476271AF550CB00808ECD /* DTTaskTableViewCell.m in Sources */,
+				CAE399481AF56046004D3E89 /* DTDashboardCollectionViewCell.m in Sources */,
+				15FDDDB71AF574F800B0BA7B /* DTProjectDetailSectionReusableView.m in Sources */,
+				15FDDDB61AF574F800B0BA7B /* DTProjectDetailCollectionViewCell.m in Sources */,
 				07F476211AF5507600808ECD /* DTCreateProjectViewController.m in Sources */,
+				CAE399451AF56036004D3E89 /* DTDashboardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

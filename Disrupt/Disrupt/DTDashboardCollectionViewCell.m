@@ -15,22 +15,33 @@
 @implementation DTDashboardCollectionViewCell
 
 #pragma mark - View Life Cycle
-//
-//- (instancetype)initWithFrame:(CGRect)frame {
-//  self = [super initWithFrame:frame];
-//  return self;
-//}
-//
-//- (void)prepareForReuse {
-//  [super prepareForReuse];
-//}
-//
-//#pragma mark - Layout
-//
-//- (void)layoutSubviews {
-//  [super layoutSubviews];
-//}
-//
-//#pragma mark - Lazy Init
-//
+
+- (instancetype)initWithFrame:(CGRect)frame {
+  self = [super initWithFrame:frame];
+  self.backgroundColor = [UIColor yellowColor];
+  [self.contentView addSubview:self.projectNameLabel];
+  return self;
+}
+
+- (void)prepareForReuse {
+  [super prepareForReuse];
+}
+
+#pragma mark - Layout
+
+- (void)layoutSubviews {
+  [super layoutSubviews];
+}
+
+#pragma mark - Lazy Init
+
+- (UILabel *)projectNameLabel {
+  if (_projectNameLabel == nil) {
+    _projectNameLabel = [UILabel new];
+    _projectNameLabel.text = @"TEST";
+  }
+  return _projectNameLabel;
+}
+
+>>>>>>> 489c18fbb119ae94a381762b132af1a5016d298f
 @end
