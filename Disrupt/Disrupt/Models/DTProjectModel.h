@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DTProjectPreviewModel : NSObject
+@interface DTProjectModel : NSObject
+- (id)initWithJSONData:(NSDictionary *)jsonData;
 @property (nonatomic, strong) NSString *projectName;
+@property (nonatomic, strong) NSString *projectId;
 @property (nonatomic, strong) NSNumber *percentComplete;
+@property (nonatomic, strong) NSMutableArray *projectTasks;
 @end

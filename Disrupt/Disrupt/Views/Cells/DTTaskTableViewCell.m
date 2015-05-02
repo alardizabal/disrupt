@@ -13,9 +13,9 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
   if (self) {
-    [self.contentView addSubview:self.taskTextField];
-    [self.contentView addSubview:self.teamMemberLabel];
-    self.backgroundColor = [UIColor blueColor];
+    [self addSubview:self.taskTextField];
+    [self addSubview:self.teamMemberLabel];
+    self.backgroundColor = [UIColor yellowColor];
   }
   return self;
 }
@@ -23,9 +23,9 @@
 - (void)layoutSubviews {
   [super layoutSubviews];
   
-  CGFloat fullWidth = CGRectGetWidth(self.contentView.bounds);
+  CGFloat fullWidth = CGRectGetWidth(self.contentView.frame);
   
-  CGFloat x = 0.0, y = 0.0, w = fullWidth * 0.7, h = CGRectGetHeight(self.contentView.bounds);
+  CGFloat x = 0.0, y = 0.0, w = fullWidth * 0.7, h = CGRectGetHeight(self.contentView.frame);
   self.taskTextField.frame = CGRectMake(x, y, w, h);
   
   x += w, w = fullWidth - w;
@@ -36,7 +36,6 @@
   if (_taskTextField == nil) {
     _taskTextField = [UITextField new];
     _taskTextField.placeholder = @"Enter a task...";
-    _taskTextField.textColor = [UIColor whiteColor];
     UIView *indentView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 20.0, 0.0)];
     [_taskTextField setLeftViewMode:UITextFieldViewModeAlways];
     [_taskTextField setLeftView:indentView];
@@ -47,9 +46,7 @@
 - (UILabel *)teamMemberLabel {
   if (_teamMemberLabel == nil) {
     _teamMemberLabel = [UILabel new];
-    _teamMemberLabel.textColor = [UIColor whiteColor];
     _teamMemberLabel.textAlignment = NSTextAlignmentCenter;
-    _teamMemberLabel.text = @"Al";
   }
   return _teamMemberLabel;
 }

@@ -60,7 +60,7 @@ static CGFloat const kDTTaskCellHeight = 80.0;
   
   CGFloat fullHeight = kDTTaskCellHeight * (1 + self.taskCount);
   CGFloat maxHeight = 240.0;
-  CGFloat h = MIN(fullHeight, maxHeight);
+  CGFloat h = fullHeight;
   
   self.taskTableView.frame = CGRectMake(x, y, w, h);
   
@@ -73,6 +73,7 @@ static CGFloat const kDTTaskCellHeight = 80.0;
   if (_taskTableView == nil) {
     _taskTableView = [UITableView new];
     _taskTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _taskTableView.rowHeight = kDTTaskCellHeight;
     _taskTableView.dataSource = self;
     _taskTableView.delegate = self;
     [_taskTableView registerClass:[DTTaskTableViewCell class] forCellReuseIdentifier:kDTTaskReuseIdentifier];
@@ -119,16 +120,20 @@ static CGFloat const kDTTaskCellHeight = 80.0;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   DTTaskTableViewCell *cell = (DTTaskTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kDTTaskReuseIdentifier];
+  NSInteger rowCount = [tableView numberOfRowsInSection:indexPath.section];
+  NSInteger taskNumber = rowCount - indexPath.row - 1;
   cell.taskTextField.delegate = self;
-  if (indexPath.row == self.taskCount) {
-    [cell.taskTextField becomeFirstResponder];
+  if (indexPath.row == 0) {
+    cell.taskTextField.text = @"";
+  } else {
+    cell.taskTextField.userInteractionEnabled = NO;
+    if (taskNumber < [self.projectManager.tasks count]) {
+      DTTask *task = self.projectManager.tasks[taskNumber];
+      cell.taskTextField.text = task.taskDescription;
+      cell.teamMemberLabel.text = task.teamMember;
+    }
   }
   return cell;
-}
-
-#pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return 60.0;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -170,7 +175,11 @@ static CGFloat const kDTTaskCellHeight = 80.0;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+  DTTask *task = [self.projectManager.tasks lastObject];
+  DTTeamCollectionViewCell *cell = (DTTeamCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+  task.teamMember = cell.nameLabel.text;
   self.teamCollectionView.hidden = YES;
+  [self.taskTableView reloadData];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout

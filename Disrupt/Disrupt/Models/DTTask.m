@@ -9,5 +9,15 @@
 #import "DTTask.h"
 
 @implementation DTTask
-
+- (id)initWithJSONData:(NSDictionary *)jsonData {
+  self = [super init];
+  if (self) {
+    self.taskDescription = jsonData[@"description"];
+    self.taskId = jsonData[@"id"];
+    self.status = jsonData[@"status"];
+    NSDictionary *userData = jsonData[@"user"];
+    self.assignedUser = [[DTUserModel alloc] initWithJSONData:userData];
+  }
+  return self;
+}
 @end
