@@ -35,16 +35,19 @@ static CGFloat const kDTTaskCellHeight = 80.0;
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-//  self.view.backgroundColor = [UIColor whiteColor];
+  self.view.backgroundColor = [UIColor whiteColor];
   self.taskCount = 0;
   
   [self.view addSubview:self.taskTableView];
   [self.view addSubview:self.teamCollectionView];
-  [self layoutSubviews];
+//  [self layoutSubviews];
+  [self.view layoutIfNeeded];
+  [self.view setNeedsDisplay];
+  [self.view setNeedsLayout];
 }
 
 #pragma mark - Layout
-- (void)layoutSubviews {
+- (void)viewWillLayoutSubviews {
   CGFloat fullWidth = CGRectGetWidth(self.view.bounds),
   horizontalMargin = 20.0,
   verticalMargin = 20.0;
@@ -134,7 +137,10 @@ static CGFloat const kDTTaskCellHeight = 80.0;
     [self.projectManager.tasks addObject:task];
     
     self.taskCount ++;
-    [self layoutSubviews];
+//    [self layoutSubviews];
+    [self.view layoutIfNeeded];
+    [self.view setNeedsLayout];
+    [self.view setNeedsDisplay];
     [self.taskTableView reloadData];
   }
   return YES;

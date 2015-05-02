@@ -158,7 +158,7 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 #pragma mark - Navigation Actions
 - (void) tappedRightBarButton:(id) sender {
   DTCreateProjectViewController *vc = [DTCreateProjectViewController new];
-  [self.navigationController pushViewController:vc animated:NO];
+  [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void) tappedLeftBarButton:(id) sender {
