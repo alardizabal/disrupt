@@ -24,6 +24,10 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   [super viewDidLoad];
     // Do any additional setup after loading the view.
   self.view.backgroundColor = [UIColor whiteColor];
+  self.navigationItem.title = @"Disrupt";
+  [self addLeftNavigationButton];
+  [self addRightNavigationButton];
+  
   [self.view addSubview:self.projectCollectionView];
 }
 
@@ -42,6 +46,28 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   CGFloat x = 0.0, y = 0.0, w = 0.0, h = 0.0;
   w = CGRectGetWidth(self.view.bounds), h = CGRectGetHeight(self.view.bounds);
   self.projectCollectionView.frame = CGRectMake(x, y, w, h);
+}
+
+- (void) addLeftNavigationButton {
+  UIImage *settingsImage = [UIImage imageNamed:@"icon_minus"];
+  UIImage *settingsImagePressed = [UIImage imageNamed:@"icon_minus"];
+  UIButton *settingsButton = [UIButton new];
+  [settingsButton setImage:settingsImage forState:UIControlStateNormal];
+  [settingsButton setImage:settingsImagePressed forState:UIControlStateHighlighted];
+  settingsButton.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
+  [settingsButton addTarget:self action:@selector(tappedLeftBarButton:) forControlEvents:UIControlEventTouchUpInside];
+  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingsButton];
+}
+
+- (void) addRightNavigationButton {
+  UIImage *settingsImage = [UIImage imageNamed:@"icon_plus"];
+  UIImage *settingsImagePressed = [UIImage imageNamed:@"icon_plus"];
+  UIButton *settingsButton = [UIButton new];
+  [settingsButton setImage:settingsImage forState:UIControlStateNormal];
+  [settingsButton setImage:settingsImagePressed forState:UIControlStateHighlighted];
+  settingsButton.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
+  [settingsButton addTarget:self action:@selector(tappedRightBarButton:) forControlEvents:UIControlEventTouchUpInside];
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingsButton];
 }
 
 #pragma mark
@@ -79,8 +105,7 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 #pragma mark - UICollectionViewDelegates
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-  return 5;
-  //return self.projects.count;
+  return self.projects.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -88,5 +113,18 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   [collectionView dequeueReusableCellWithReuseIdentifier:kDTDashboardCellReuseId
                                             forIndexPath:indexPath];
   return cell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+  return CGSizeMake(self.view.frame.size.width, 150.0);
+}
+
+#pragma mark - Navigation Actions
+- (void) tappedRightBarButton:(id) sender {
+  NSLog(@"Tapped right bar button");
+}
+
+- (void) tappedLeftBarButton:(id) sender {
+  NSLog(@"Tapped left bar button");
 }
 @end

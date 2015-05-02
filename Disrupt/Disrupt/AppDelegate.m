@@ -19,9 +19,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
   DTDashboardViewController *vc = [DTDashboardViewController new];
+  UINavigationController *navController = [UINavigationController new];
   self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-  self.window.rootViewController = vc;
+  self.window.rootViewController = navController;
   [self.window makeKeyAndVisible];
+  [navController pushViewController:vc animated:YES];
   
   return YES;
 }
