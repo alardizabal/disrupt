@@ -59,7 +59,6 @@ static CGFloat const kDTTaskCellHeight = 80.0;
   CGFloat x = horizontalMargin, y = 100.0, w = fullWidth - 2 * horizontalMargin;
   
   CGFloat fullHeight = kDTTaskCellHeight * (1 + self.taskCount);
-  CGFloat maxHeight = 240.0;
   CGFloat h = fullHeight;
   
   self.taskTableView.frame = CGRectMake(x, y, w, h);
@@ -104,7 +103,7 @@ static CGFloat const kDTTaskCellHeight = 80.0;
 - (DTTeamManager *)teamManager {
   if (_teamManager == nil) {
     _teamManager = [DTTeamManager sharedManager];
-    _teamManager.teamMembers = @[@"Al", @"Danny", @"Kevin", @"Rich"];
+    _teamManager.teamMembers = [[NSMutableArray alloc] initWithArray:@[@"Al", @"Danny", @"Kevin", @"Rich"]];
   }
   return _teamManager;
 }
