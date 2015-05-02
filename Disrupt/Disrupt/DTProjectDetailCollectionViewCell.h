@@ -10,4 +10,8 @@
 
 @interface DTProjectDetailCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic, strong) UILabel *numberLabel;
+@property (nonatomic, strong) UILabel *taskTitleLabel;
+@property (nonatomic, strong) UIImageView *memberImageView;
+
 @end
