@@ -83,8 +83,24 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   
   DTProjectDetailSectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kDTProjectDetailSectionReuseId forIndexPath:indexPath];
   
-  header.sectionTitleLabel.text = @"In Progress";
+  NSString *statusString;
+  if (indexPath.section == 0) {
+    statusString = @"Not Yet Started";
+  } else if (indexPath.section == 1) {
+    statusString = @"In Progress";
+  } else if (indexPath.section == 2) {
+    statusString = @"Review";
+  } else if (indexPath.section == 3) {
+    statusString = @"Done";
+  }
+  
+  header.sectionTitleLabel.text = statusString;
+  
   return header;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+  return CGSizeMake(self.view.frame.size.width, 20.0);
 }
 
 #pragma mark - Collection View Data Source
@@ -94,7 +110,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-  return 3;
+  return 4;
 }
 
 #pragma mark - Collection View Flow Layout

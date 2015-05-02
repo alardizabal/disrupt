@@ -31,7 +31,7 @@ static const CGFloat kDTHorizontalPadding = 15.0;
   CGFloat x = 0.0, y = 0.0, w = 0.0, h = 0.0;
   
   x = kDTHorizontalPadding, y = 0.0,
-  w = self.bounds.size.width - kDTHorizontalPadding * 2, h = 20.0;
+  w = self.bounds.size.width - kDTHorizontalPadding * 2, h = self.bounds.size.height;
   self.sectionTitleLabel.frame = CGRectMake(x, y, w, h);
 }
 
