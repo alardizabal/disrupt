@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15A6C4001AF551B9003C7B1D /* DTProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A6C3FF1AF551B9003C7B1D /* DTProjectDetailViewController.m */; };
+		15A6C4031AF555EE003C7B1D /* DTProjectDetailCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A6C4021AF555EE003C7B1D /* DTProjectDetailCollectionViewCell.m */; };
 		CAE399121AF547B1004D3E89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399111AF547B1004D3E89 /* main.m */; };
 		CAE399151AF547B1004D3E89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399141AF547B1004D3E89 /* AppDelegate.m */; };
 		CAE3991D1AF547B1004D3E89 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE3991C1AF547B1004D3E89 /* Images.xcassets */; };
@@ -24,6 +26,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15A6C3FE1AF551B9003C7B1D /* DTProjectDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTProjectDetailViewController.h; sourceTree = "<group>"; };
+		15A6C3FF1AF551B9003C7B1D /* DTProjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTProjectDetailViewController.m; sourceTree = "<group>"; };
+		15A6C4011AF555EE003C7B1D /* DTProjectDetailCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTProjectDetailCollectionViewCell.h; sourceTree = "<group>"; };
+		15A6C4021AF555EE003C7B1D /* DTProjectDetailCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTProjectDetailCollectionViewCell.m; sourceTree = "<group>"; };
 		CAE3990C1AF547B1004D3E89 /* Disrupt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Disrupt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE399101AF547B1004D3E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAE399111AF547B1004D3E89 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -56,6 +62,8 @@
 		07F4761E1AF54F6400808ECD /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				15A6C3FE1AF551B9003C7B1D /* DTProjectDetailViewController.h */,
+				15A6C3FF1AF551B9003C7B1D /* DTProjectDetailViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -83,6 +91,8 @@
 			children = (
 				07F4761E1AF54F6400808ECD /* View Controllers */,
 				CAE3990F1AF547B1004D3E89 /* Supporting Files */,
+				15A6C4011AF555EE003C7B1D /* DTProjectDetailCollectionViewCell.h */,
+				15A6C4021AF555EE003C7B1D /* DTProjectDetailCollectionViewCell.m */,
 			);
 			path = Disrupt;
 			sourceTree = "<group>";
@@ -214,8 +224,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15A6C4001AF551B9003C7B1D /* DTProjectDetailViewController.m in Sources */,
 				CAE399151AF547B1004D3E89 /* AppDelegate.m in Sources */,
 				CAE399121AF547B1004D3E89 /* main.m in Sources */,
+				15A6C4031AF555EE003C7B1D /* DTProjectDetailCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
