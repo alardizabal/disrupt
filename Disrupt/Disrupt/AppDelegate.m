@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "DTDashboardViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
+  DTDashboardViewController *vc = [DTDashboardViewController new];
+  self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+  self.window.rootViewController = vc;
+  [self.window makeKeyAndVisible];
+  
   return YES;
 }
 

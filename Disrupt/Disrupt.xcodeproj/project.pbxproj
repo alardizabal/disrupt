@@ -11,6 +11,8 @@
 		CAE399151AF547B1004D3E89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399141AF547B1004D3E89 /* AppDelegate.m */; };
 		CAE3991D1AF547B1004D3E89 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE3991C1AF547B1004D3E89 /* Images.xcassets */; };
 		CAE3992C1AF547B1004D3E89 /* DisruptTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE3992B1AF547B1004D3E89 /* DisruptTests.m */; };
+		CAE3993C1AF55093004D3E89 /* DTDashboardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE3993B1AF55093004D3E89 /* DTDashboardCollectionViewCell.m */; };
+		CAE399421AF55396004D3E89 /* DTDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399411AF55396004D3E89 /* DTDashboardViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +35,10 @@
 		CAE399251AF547B1004D3E89 /* DisruptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DisruptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE3992A1AF547B1004D3E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAE3992B1AF547B1004D3E89 /* DisruptTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisruptTests.m; sourceTree = "<group>"; };
+		CAE3993A1AF55093004D3E89 /* DTDashboardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDashboardCollectionViewCell.h; sourceTree = "<group>"; };
+		CAE3993B1AF55093004D3E89 /* DTDashboardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDashboardCollectionViewCell.m; sourceTree = "<group>"; };
+		CAE399401AF55396004D3E89 /* DTDashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDashboardViewController.h; sourceTree = "<group>"; };
+		CAE399411AF55396004D3E89 /* DTDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDashboardViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +87,12 @@
 		CAE3990E1AF547B1004D3E89 /* Disrupt */ = {
 			isa = PBXGroup;
 			children = (
+				CAE3993A1AF55093004D3E89 /* DTDashboardCollectionViewCell.h */,
+				CAE3993B1AF55093004D3E89 /* DTDashboardCollectionViewCell.m */,
 				07F4761E1AF54F6400808ECD /* View Controllers */,
 				CAE3990F1AF547B1004D3E89 /* Supporting Files */,
+				CAE399401AF55396004D3E89 /* DTDashboardViewController.h */,
+				CAE399411AF55396004D3E89 /* DTDashboardViewController.m */,
 			);
 			path = Disrupt;
 			sourceTree = "<group>";
@@ -214,6 +224,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAE3993C1AF55093004D3E89 /* DTDashboardCollectionViewCell.m in Sources */,
+				CAE399421AF55396004D3E89 /* DTDashboardViewController.m in Sources */,
 				CAE399151AF547B1004D3E89 /* AppDelegate.m in Sources */,
 				CAE399121AF547B1004D3E89 /* main.m in Sources */,
 			);
