@@ -10,6 +10,7 @@
 #import "DTCreateProjectViewController.h"
 #import "DTProjectDetailViewController.h"
 #import "DTDashboardViewController.h"
+#import "DTCreateProjectViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,20 +20,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  self.window.backgroundColor = [UIColor whiteColor];
-  
-  DTProjectDetailViewController *vc = [DTProjectDetailViewController new];
-  self.window.rootViewController = vc;
+
+  // Override point for customization after application launch.
+  DTDashboardViewController *vc = [DTDashboardViewController new];
+  UINavigationController *navController = [UINavigationController new];
+  self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+  self.window.rootViewController = navController;
   [self.window makeKeyAndVisible];
-  
-//  // Override point for customization after application launch.
-//  DTDashboardViewController *vc = [DTDashboardViewController new];
-//  UINavigationController *navController = [UINavigationController new];
-//  self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-//  self.window.rootViewController = navController;
-//  [self.window makeKeyAndVisible];
-//  [navController pushViewController:vc animated:YES];
+  [navController pushViewController:vc animated:YES];
   
   return YES;
 }
