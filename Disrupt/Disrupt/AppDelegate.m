@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DTDashboardViewController.h"
+#import "DTCreateProjectViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,8 +18,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  // Override point for customization after application launch.
-  DTDashboardViewController *vc = [DTDashboardViewController new];
+  DTCreateProjectViewController *vc = [DTCreateProjectViewController new];
   UINavigationController *navController = [UINavigationController new];
   self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
   self.window.rootViewController = navController;

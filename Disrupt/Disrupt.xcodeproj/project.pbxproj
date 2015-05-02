@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		07F476211AF5507600808ECD /* DTCreateProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F476201AF5507600808ECD /* DTCreateProjectViewController.m */; };
 		07F476271AF550CB00808ECD /* DTTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F476261AF550CB00808ECD /* DTTaskTableViewCell.m */; };
+		07F4762B1AF5677300808ECD /* DTProjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F4762A1AF5677300808ECD /* DTProjectManager.m */; };
+		07F4762E1AF569CD00808ECD /* DTTeamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F4762D1AF569CD00808ECD /* DTTeamManager.m */; };
+		07F476311AF56ECF00808ECD /* DTTeamCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F476301AF56ECF00808ECD /* DTTeamCollectionViewCell.m */; };
+		07F476341AF573D500808ECD /* DTTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F476331AF573D500808ECD /* DTTask.m */; };
 		556A7AC62C8C8C27D0B36184 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3013587BEF7AF8D2145804 /* libPods.a */; };
 		CAE399121AF547B1004D3E89 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399111AF547B1004D3E89 /* main.m */; };
 		CAE399151AF547B1004D3E89 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399141AF547B1004D3E89 /* AppDelegate.m */; };
@@ -16,7 +20,6 @@
 		CAE3992C1AF547B1004D3E89 /* DisruptTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE3992B1AF547B1004D3E89 /* DisruptTests.m */; };
 		CAE399451AF56036004D3E89 /* DTDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399441AF56036004D3E89 /* DTDashboardViewController.m */; };
 		CAE399481AF56046004D3E89 /* DTDashboardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399471AF56046004D3E89 /* DTDashboardCollectionViewCell.m */; };
-		CAE3994C1AF56DB1004D3E89 /* DTProjectPreviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE3994B1AF56DB1004D3E89 /* DTProjectPreviewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,14 @@
 		07F476201AF5507600808ECD /* DTCreateProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTCreateProjectViewController.m; path = "View Controllers/DTCreateProjectViewController.m"; sourceTree = "<group>"; };
 		07F476251AF550CB00808ECD /* DTTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTaskTableViewCell.h; path = Views/Cells/DTTaskTableViewCell.h; sourceTree = "<group>"; };
 		07F476261AF550CB00808ECD /* DTTaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTaskTableViewCell.m; path = Views/Cells/DTTaskTableViewCell.m; sourceTree = "<group>"; };
+		07F476291AF5677300808ECD /* DTProjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTProjectManager.h; path = Models/DTProjectManager.h; sourceTree = "<group>"; };
+		07F4762A1AF5677300808ECD /* DTProjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTProjectManager.m; path = Models/DTProjectManager.m; sourceTree = "<group>"; };
+		07F4762C1AF569CD00808ECD /* DTTeamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTeamManager.h; path = Models/DTTeamManager.h; sourceTree = "<group>"; };
+		07F4762D1AF569CD00808ECD /* DTTeamManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTeamManager.m; path = Models/DTTeamManager.m; sourceTree = "<group>"; };
+		07F4762F1AF56ECF00808ECD /* DTTeamCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTeamCollectionViewCell.h; path = Views/Cells/DTTeamCollectionViewCell.h; sourceTree = "<group>"; };
+		07F476301AF56ECF00808ECD /* DTTeamCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTeamCollectionViewCell.m; path = Views/Cells/DTTeamCollectionViewCell.m; sourceTree = "<group>"; };
+		07F476321AF573D500808ECD /* DTTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTask.h; path = Models/DTTask.h; sourceTree = "<group>"; };
+		07F476331AF573D500808ECD /* DTTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTask.m; path = Models/DTTask.m; sourceTree = "<group>"; };
 		AA3013587BEF7AF8D2145804 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE3990C1AF547B1004D3E89 /* Disrupt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Disrupt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE399101AF547B1004D3E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,8 +59,6 @@
 		CAE399441AF56036004D3E89 /* DTDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDashboardViewController.m; sourceTree = "<group>"; };
 		CAE399461AF56046004D3E89 /* DTDashboardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDashboardCollectionViewCell.h; sourceTree = "<group>"; };
 		CAE399471AF56046004D3E89 /* DTDashboardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDashboardCollectionViewCell.m; sourceTree = "<group>"; };
-		CAE3994A1AF56DB1004D3E89 /* DTProjectPreviewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTProjectPreviewModel.h; path = Models/DTProjectPreviewModel.h; sourceTree = "<group>"; };
-		CAE3994B1AF56DB1004D3E89 /* DTProjectPreviewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTProjectPreviewModel.m; path = Models/DTProjectPreviewModel.m; sourceTree = "<group>"; };
 		D85421A1DE7B49872597F7DD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DDACA5207A533CA5004C58AD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,8 +108,23 @@
 				CAE399471AF56046004D3E89 /* DTDashboardCollectionViewCell.m */,
 				07F476251AF550CB00808ECD /* DTTaskTableViewCell.h */,
 				07F476261AF550CB00808ECD /* DTTaskTableViewCell.m */,
+				07F4762F1AF56ECF00808ECD /* DTTeamCollectionViewCell.h */,
+				07F476301AF56ECF00808ECD /* DTTeamCollectionViewCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		07F476281AF5675100808ECD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				07F476291AF5677300808ECD /* DTProjectManager.h */,
+				07F4762A1AF5677300808ECD /* DTProjectManager.m */,
+				07F4762C1AF569CD00808ECD /* DTTeamManager.h */,
+				07F4762D1AF569CD00808ECD /* DTTeamManager.m */,
+				07F476321AF573D500808ECD /* DTTask.h */,
+				07F476331AF573D500808ECD /* DTTask.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		3F0E81786E4893DE3A195296 /* Pods */ = {
@@ -143,7 +167,7 @@
 		CAE3990E1AF547B1004D3E89 /* Disrupt */ = {
 			isa = PBXGroup;
 			children = (
-				CAE399491AF56C3F004D3E89 /* Models */,
+				07F476281AF5675100808ECD /* Models */,
 				07F476221AF550A400808ECD /* Views */,
 				07F4761E1AF54F6400808ECD /* View Controllers */,
 				CAE3990F1AF547B1004D3E89 /* Supporting Files */,
@@ -178,15 +202,6 @@
 				CAE3992A1AF547B1004D3E89 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CAE399491AF56C3F004D3E89 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				CAE3994A1AF56DB1004D3E89 /* DTProjectPreviewModel.h */,
-				CAE3994B1AF56DB1004D3E89 /* DTProjectPreviewModel.m */,
-			);
-			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,8 +340,11 @@
 			files = (
 				CAE399151AF547B1004D3E89 /* AppDelegate.m in Sources */,
 				CAE399121AF547B1004D3E89 /* main.m in Sources */,
+				07F476311AF56ECF00808ECD /* DTTeamCollectionViewCell.m in Sources */,
+				07F4762B1AF5677300808ECD /* DTProjectManager.m in Sources */,
 				07F476271AF550CB00808ECD /* DTTaskTableViewCell.m in Sources */,
-				CAE3994C1AF56DB1004D3E89 /* DTProjectPreviewModel.m in Sources */,
+				07F4762E1AF569CD00808ECD /* DTTeamManager.m in Sources */,
+				07F476341AF573D500808ECD /* DTTask.m in Sources */,
 				CAE399481AF56046004D3E89 /* DTDashboardCollectionViewCell.m in Sources */,
 				07F476211AF5507600808ECD /* DTCreateProjectViewController.m in Sources */,
 				CAE399451AF56036004D3E89 /* DTDashboardViewController.m in Sources */,
