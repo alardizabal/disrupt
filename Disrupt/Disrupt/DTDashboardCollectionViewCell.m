@@ -43,5 +43,4 @@
   return _projectNameLabel;
 }
 
->>>>>>> 489c18fbb119ae94a381762b132af1a5016d298f
 @end
