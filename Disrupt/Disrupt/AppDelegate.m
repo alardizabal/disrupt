@@ -21,8 +21,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-  DTDashboardViewController *vc = [DTDashboardViewController new];
+//  DTDashboardViewController *vc = [DTDashboardViewController new];
 //  DTCreateProjectViewController *vc = [DTCreateProjectViewController new];
+  DTProjectDetailViewController *vc = [DTProjectDetailViewController new];
   UINavigationController *navController = [UINavigationController new];
   self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
   self.window.rootViewController = navController;
