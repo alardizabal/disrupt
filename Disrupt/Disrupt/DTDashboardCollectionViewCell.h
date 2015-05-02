@@ -11,7 +11,6 @@
 @import UIKit;
 
 @interface DTDashboardCollectionViewCell : UICollectionViewCell
-
-@property (nonatomic, strong) NSString *projectName;
-
+- (void)setProjectName:(NSString *)name;
+- (void)setProjectPercentage:(NSNumber *)value;
 @end

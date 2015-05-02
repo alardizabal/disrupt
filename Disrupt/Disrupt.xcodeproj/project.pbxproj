@@ -16,6 +16,7 @@
 		CAE3992C1AF547B1004D3E89 /* DisruptTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE3992B1AF547B1004D3E89 /* DisruptTests.m */; };
 		CAE399451AF56036004D3E89 /* DTDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399441AF56036004D3E89 /* DTDashboardViewController.m */; };
 		CAE399481AF56046004D3E89 /* DTDashboardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE399471AF56046004D3E89 /* DTDashboardCollectionViewCell.m */; };
+		CAE3994C1AF56DB1004D3E89 /* DTProjectPreviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE3994B1AF56DB1004D3E89 /* DTProjectPreviewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		CAE399441AF56036004D3E89 /* DTDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDashboardViewController.m; sourceTree = "<group>"; };
 		CAE399461AF56046004D3E89 /* DTDashboardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTDashboardCollectionViewCell.h; sourceTree = "<group>"; };
 		CAE399471AF56046004D3E89 /* DTDashboardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTDashboardCollectionViewCell.m; sourceTree = "<group>"; };
+		CAE3994A1AF56DB1004D3E89 /* DTProjectPreviewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTProjectPreviewModel.h; path = Models/DTProjectPreviewModel.h; sourceTree = "<group>"; };
+		CAE3994B1AF56DB1004D3E89 /* DTProjectPreviewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTProjectPreviewModel.m; path = Models/DTProjectPreviewModel.m; sourceTree = "<group>"; };
 		D85421A1DE7B49872597F7DD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DDACA5207A533CA5004C58AD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +143,7 @@
 		CAE3990E1AF547B1004D3E89 /* Disrupt */ = {
 			isa = PBXGroup;
 			children = (
+				CAE399491AF56C3F004D3E89 /* Models */,
 				07F476221AF550A400808ECD /* Views */,
 				07F4761E1AF54F6400808ECD /* View Controllers */,
 				CAE3990F1AF547B1004D3E89 /* Supporting Files */,
@@ -174,6 +178,15 @@
 				CAE3992A1AF547B1004D3E89 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CAE399491AF56C3F004D3E89 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CAE3994A1AF56DB1004D3E89 /* DTProjectPreviewModel.h */,
+				CAE3994B1AF56DB1004D3E89 /* DTProjectPreviewModel.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +326,7 @@
 				CAE399151AF547B1004D3E89 /* AppDelegate.m in Sources */,
 				CAE399121AF547B1004D3E89 /* main.m in Sources */,
 				07F476271AF550CB00808ECD /* DTTaskTableViewCell.m in Sources */,
+				CAE3994C1AF56DB1004D3E89 /* DTProjectPreviewModel.m in Sources */,
 				CAE399481AF56046004D3E89 /* DTDashboardCollectionViewCell.m in Sources */,
 				07F476211AF5507600808ECD /* DTCreateProjectViewController.m in Sources */,
 				CAE399451AF56036004D3E89 /* DTDashboardViewController.m in Sources */,
