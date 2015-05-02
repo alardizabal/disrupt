@@ -160,6 +160,7 @@
 		CAE399041AF547B1004D3E89 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = DT;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = Posse;
 				TargetAttributes = {
