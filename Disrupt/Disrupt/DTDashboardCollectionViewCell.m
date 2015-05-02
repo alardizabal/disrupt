@@ -8,16 +8,19 @@
 
 #import "DTDashboardCollectionViewCell.h"
 
-@implementation DTDashboardCollectionViewCell
-
 @interface DTDashboardCollectionViewCell ()
 @property (nonatomic, strong) UILabel *projectNameLabel;
 @end
+
+@implementation DTDashboardCollectionViewCell
+
 
 #pragma mark - View Life Cycle
 
 - (instancetype)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
+  self.backgroundColor = [UIColor yellowColor];
+  [self.contentView addSubview:self.projectNameLabel];
   return self;
 }
 
@@ -32,5 +35,13 @@
 }
 
 #pragma mark - Lazy Init
+
+- (UILabel *)projectNameLabel {
+  if (_projectNameLabel == nil) {
+    _projectNameLabel = [UILabel new];
+    _projectNameLabel.text = @"TEST";
+  }
+  return _projectNameLabel;
+}
 
 @end
