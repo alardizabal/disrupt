@@ -12,6 +12,7 @@
 #import "DTProjectManager.h"
 #import "DTTeamManager.h"
 #import "DTTask.h"
+#import <AFNetworking/AFNetworking.h>
 
 static NSString * kDTTaskReuseIdentifier = @"dt.reuseId.task";
 static NSString * kDTTeamReuseIdentifier = @"dt.reuseId.team";
@@ -55,6 +56,9 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   [self.view setNeedsDisplay];
   [self.view setNeedsLayout];
   [self.view layoutIfNeeded];
+  
+  UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(tappedSaveButton:)];
+  self.navigationItem.rightBarButtonItem = rightBarButtonItem;
 }
 
 #pragma mark - Layout
@@ -197,7 +201,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   NSInteger rowCount = [tableView numberOfRowsInSection:indexPath.section];
   NSInteger taskNumber = rowCount - indexPath.row - 1;
   cell.taskDesciptionTextView.delegate = self;
-  cell.taskNumberLabel.text = [NSString stringWithFormat:@"%li", taskNumber + 1];
+  cell.taskNumberLabel.text = [NSString stringWithFormat:@"%d", taskNumber + 1];
   if (indexPath.row == 0) {
     cell.taskDesciptionTextView.userInteractionEnabled = YES;
     cell.taskDesciptionTextView.text = @"";
@@ -307,6 +311,43 @@ static CGFloat const kDTTaskCellHeight = 50.0;
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
   return 0.0;
+}
+
+#pragma mark - Network Tasks
+
+- (void)postNewProject {
+  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  manager.requestSerializer = [AFJSONRequestSerializer serializer];
+  
+  NSString *URLString = @"http://api.localhost.local:3040/projects/create";
+  NSMutableDictionary *payload = [NSMutableDictionary new];
+  NSDictionary *project = @{@"title" : self.projectNameTextField.text};
+  payload[@"project"] = project;
+  NSMutableArray *taskParams = [NSMutableArray new];
+  for (DTTask *task in self.projectManager.tasks) {
+    NSMutableDictionary *taskDict = [NSMutableDictionary new];
+    taskDict[@"user_id"] = @"DUVJT93474LOT2472";
+    taskDict[@"description"] = task.taskDescription;
+    taskDict[@"minutes"] = @60;
+    taskDict[@"estimate"] = @300;
+    taskDict[@"status"] = @"not_started";
+    [taskParams addObject:taskDict];
+  }
+  payload[@"tasks"] = taskParams;
+  
+  [manager POST:URLString parameters:payload
+        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@"JSON: %@", responseObject);
+  }
+        failure:
+   ^(AFHTTPRequestOperation *operation, NSError *error) {
+     NSLog(@"Error: %@", error);
+   }];
+}
+
+#pragma mark - Actions
+- (void)tappedSaveButton:(id)sender {
+  [self postNewProject];
 }
 
 @end
