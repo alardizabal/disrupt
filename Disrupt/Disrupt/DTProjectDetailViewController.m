@@ -7,11 +7,10 @@
 //
 
 #import "DTProjectDetailViewController.h"
-
 #import "DTProjectDetailCollectionViewCell.h"
 #import "DTProjectDetailSectionReusableView.h"
-
 #import "DTTask.h"
+#import <AFNetworking/AFNetworking.h>
 
 static CGFloat const kDTCollectionViewCellHeight = 60.0;
 
@@ -302,7 +301,17 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
 }
 
 - (void)tappedRightBarButton:(id)sender {
-  NSLog(@"Tapped");
+  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  //projects/:id/send_project_status
+  NSMutableString *URLString = [[NSMutableString alloc] initWithString:@"http://api.localhost.local:3040/projects/"];
+  [URLString appendString:self.project.projectId];
+  [URLString appendString:@"/send_project_status"];
+  NSLog(@"%@", URLString);
+  [manager POST:URLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@"YAEAAAAH");
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    NSLog(@"nooooO!");
+  }];
 }
 
 @end
