@@ -18,7 +18,7 @@ static NSString * kDTTaskReuseIdentifier = @"dt.reuseId.task";
 static NSString * kDTTeamReuseIdentifier = @"dt.reuseId.team";
 static CGFloat const kDTTaskCellHeight = 50.0;
 
-@interface DTCreateProjectViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UITextViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface DTCreateProjectViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UITextViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UITextField *projectNameTextField;
 @property (nonatomic, strong) UIView *headerView;
@@ -31,6 +31,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
 @property (nonatomic, strong) UILabel *editNumberLabel;
 @property (nonatomic, strong) UITextView *editDescriptionTextView;
 @property (nonatomic, strong) UILabel *editMemberLabel;
+@property (nonatomic, strong) UIImageView *dimView;
 
 @property (nonatomic, strong) DTProjectManager *projectManager;
 @property (nonatomic, strong) DTTeamManager *teamManager;
@@ -48,13 +49,14 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   self.view.backgroundColor = [UIColor whiteColor];
   self.automaticallyAdjustsScrollViewInsets = NO;
   
+  [self.view addSubview:self.headerView];
   [self.view addSubview:self.projectNameTextField];
   [self.view addSubview:self.taskTableView];
-  [self.view addSubview:self.teamCollectionView];
-  [self.view addSubview:self.headerView];
   [self.headerView addSubview:self.taskNumberLabel];
   [self.headerView addSubview:self.taskDescriptionLabel];
   [self.headerView addSubview:self.taskMemberLabel];
+  [self.view addSubview:self.dimView];
+  [self.view addSubview:self.teamCollectionView];
   [self.view setNeedsDisplay];
   [self.view setNeedsLayout];
   [self.view layoutIfNeeded];
@@ -73,7 +75,10 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   horizontalMargin = 20.0,
   verticalMargin = 20.0;
   
-  CGFloat x = 0.0, y = verticalMargin, w = fullWidth, h = 60.0;
+  CGFloat x = 0.0, y = 0.0, w = fullWidth, h = fullHeight;
+  self.dimView.frame = CGRectMake(x, y, w, h);
+  
+  x = 0.0, y = verticalMargin, w = fullWidth, h = 60.0;
   self.projectNameTextField.frame = CGRectMake(x, y, w, h);
   
   y = CGRectGetMaxY(self.projectNameTextField.frame) + verticalMargin, h = 30.0;
@@ -125,9 +130,10 @@ static CGFloat const kDTTaskCellHeight = 50.0;
     _projectNameTextField.delegate = self;
     _projectNameTextField.placeholder = @"PROJECT NAME";
     _projectNameTextField.textAlignment = NSTextAlignmentCenter;
-    _projectNameTextField.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:28.0];
-    _projectNameTextField.textColor = [UIColor whiteColor];
+    _projectNameTextField.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:40.0];
+    _projectNameTextField.textColor = [UIColor darkGrayColor];
     _projectNameTextField.tintColor = [UIColor dtBlueColor];
+    _projectNameTextField.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
   }
   return _projectNameTextField;
 }
@@ -176,7 +182,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   if (_taskTableView == nil) {
     _taskTableView = [UITableView new];
     _taskTableView.separatorColor = [UIColor whiteColor];
-    _taskTableView.backgroundColor = [UIColor colorWithRed:0/255.0f green:200/255.0f blue:180/255.0f alpha:1.0];
+    _taskTableView.backgroundColor = [UIColor dtBlueColor];
     _taskTableView.dataSource = self;
     _taskTableView.delegate = self;
     _taskTableView.allowsMultipleSelectionDuringEditing = NO;
@@ -189,13 +195,25 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   if (_teamCollectionView == nil) {
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     _teamCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    _teamCollectionView.backgroundColor = [UIColor purpleColor];
+    _teamCollectionView.backgroundColor = [UIColor whiteColor];
     _teamCollectionView.dataSource = self;
     _teamCollectionView.delegate = self;
     [_teamCollectionView registerClass:[DTTeamCollectionViewCell class] forCellWithReuseIdentifier:kDTTeamReuseIdentifier];
     _teamCollectionView.hidden = YES;
   }
   return _teamCollectionView;
+}
+
+- (UIImageView *)dimView {
+  if (_dimView == nil) {
+    _dimView = [UIImageView new];
+    _dimView.userInteractionEnabled = YES;
+    [_dimView addGestureRecognizer:
+     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedOverlay:)]];
+    _dimView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.5f];
+    _dimView.hidden = YES;
+  }
+  return _dimView;
 }
 
 - (DTProjectManager *)projectManager {
@@ -311,6 +329,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   if([text isEqualToString:@"\n"]) {
     if (textView.text.length > 0) {
       self.teamCollectionView.hidden = NO;
+      self.dimView.hidden = NO;
       if (textView.text.length > 0) {
         DTTask *task = [DTTask new];
         task.taskDescription = textView.text;
@@ -337,7 +356,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   DTTeamCollectionViewCell *cell = (DTTeamCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kDTTeamReuseIdentifier forIndexPath:indexPath];
   cell.user = self.teamManager.teamMembers[indexPath.row];
-  cell.nameLabel.text = cell.user.userName;
+  cell.nameLabel.text = [cell.user.userName uppercaseString];
   return cell;
 }
 
@@ -347,6 +366,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   task.assignedUser = cell.user;
   
   self.teamCollectionView.hidden = YES;
+  self.dimView.hidden = YES;
   [self.taskTableView reloadData];
   [self.view layoutIfNeeded];
   [self.view setNeedsLayout];
@@ -363,11 +383,11 @@ static CGFloat const kDTTaskCellHeight = 50.0;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-  return 0.0;
+  return 1.0;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-  return 0.0;
+  return 1.0;
 }
   
 #pragma mark - Network Tasks
@@ -409,6 +429,11 @@ static CGFloat const kDTTaskCellHeight = 50.0;
 
 - (void)tappedSaveButton:(id)sender {
   [self postNewProject];
+}
+
+- (void)tappedOverlay:(id)sender {
+  self.dimView.hidden = YES;
+  self.teamCollectionView.hidden = YES;
 }
 
 @end

@@ -55,7 +55,7 @@
     _taskDescriptionTextView.textColor = [UIColor whiteColor];
     _taskDescriptionTextView.textContainerInset = UIEdgeInsetsMake(10.0, 20.0, 0.0, 0.0);
     _taskDescriptionTextView.textAlignment = NSTextAlignmentCenter;
-    _taskDescriptionTextView.tintColor = [UIColor colorWithRed:255.0/255.0 green:30.0/255.0 blue:144.0/255.0 alpha:1.0];
+    _taskDescriptionTextView.tintColor = [UIColor whiteColor];
   }
   return _taskDescriptionTextView;
 }
