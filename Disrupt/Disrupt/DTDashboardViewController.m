@@ -27,7 +27,7 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   [super viewDidLoad];
   
   self.view.backgroundColor = [UIColor whiteColor];
-  self.title = @"DELEGATE";
+  self.title = @"PUSHPIN";
   NSDictionary *titleAttributes = @{ NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:28.0],
                                      NSForegroundColorAttributeName : [UIColor whiteColor] };
   [self.navigationController.navigationBar setTitleTextAttributes:titleAttributes];
@@ -51,8 +51,8 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 - (void)viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
   
-  CGFloat x = 0.0, y = 20.0, w = 0.0, h = 0.0;
-  w = CGRectGetWidth(self.view.bounds), h = CGRectGetHeight(self.view.bounds);
+  CGFloat x = 0.0, y = -8.0, w = 0.0, h = 0.0;
+  w = CGRectGetWidth(self.view.bounds), h = CGRectGetHeight(self.view.bounds) + 8.0;
   self.projectCollectionView.frame = CGRectMake(x, y, w, h);
 }
 
@@ -187,7 +187,6 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   DTProjectDetailViewController *vc = [DTProjectDetailViewController new];
   vc.project = proj;
   DTDashboardCollectionViewCell *cell = (DTDashboardCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
-  cell.contentView.backgroundColor = [UIColor lightGrayColor];
   
   [self.navigationController pushViewController:vc animated:YES];
 }

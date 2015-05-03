@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		071B893C1AF61922009CF87E /* UIColor+Disrupt.m in Sources */ = {isa = PBXBuildFile; fileRef = 071B893B1AF61922009CF87E /* UIColor+Disrupt.m */; };
+		071B893F1AF64332009CF87E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071B893E1AF64332009CF87E /* LaunchScreen.xib */; };
 		07F476211AF5507600808ECD /* DTCreateProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F476201AF5507600808ECD /* DTCreateProjectViewController.m */; };
 		07F476271AF550CB00808ECD /* DTTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F476261AF550CB00808ECD /* DTTaskTableViewCell.m */; };
 		07F4762B1AF5677300808ECD /* DTProjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F4762A1AF5677300808ECD /* DTProjectManager.m */; };
@@ -42,6 +43,7 @@
 		071B893A1AF61922009CF87E /* UIColor+Disrupt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Disrupt.h"; path = "Categories/UIColor+Disrupt.h"; sourceTree = "<group>"; };
 		071B893B1AF61922009CF87E /* UIColor+Disrupt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Disrupt.m"; path = "Categories/UIColor+Disrupt.m"; sourceTree = "<group>"; };
 		071B893D1AF619DC009CF87E /* Disrupt.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Disrupt.pch; sourceTree = "<group>"; };
+		071B893E1AF64332009CF87E /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		07F4761F1AF5507600808ECD /* DTCreateProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTCreateProjectViewController.h; path = "View Controllers/DTCreateProjectViewController.h"; sourceTree = "<group>"; };
 		07F476201AF5507600808ECD /* DTCreateProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTCreateProjectViewController.m; path = "View Controllers/DTCreateProjectViewController.m"; sourceTree = "<group>"; };
 		07F476251AF550CB00808ECD /* DTTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTaskTableViewCell.h; path = Views/Cells/DTTaskTableViewCell.h; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 		CAE3990F1AF547B1004D3E89 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				071B893E1AF64332009CF87E /* LaunchScreen.xib */,
 				CAE399131AF547B1004D3E89 /* AppDelegate.h */,
 				CAE399141AF547B1004D3E89 /* AppDelegate.m */,
 				CAE3991C1AF547B1004D3E89 /* Images.xcassets */,
@@ -327,6 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				071B893F1AF64332009CF87E /* LaunchScreen.xib in Resources */,
 				CAE3991D1AF547B1004D3E89 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

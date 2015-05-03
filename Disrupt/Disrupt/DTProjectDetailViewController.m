@@ -130,11 +130,6 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   DTProjectDetailCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDTProjectDetailCellReuseId forIndexPath:indexPath];
   
-//  cell.numberLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
-//  cell.taskTitleLabel.text = @"This is a title text label.";
-//  DTTask *task = self.project.projectTasks[indexPath.row];
-//  cell.taskTitleLabel.text = task.taskDescription;
-  
   BOOL isEmptyState = NO;
   DTTask *task = nil;
   
@@ -166,7 +161,9 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
   
   if (isEmptyState == YES) {
     cell.taskTitleLabel.alpha = 0.3;
-    cell.taskTitleLabel.text = @"No tasks found.";
+    cell.taskTitleLabel.text = @"No tasks found";
+    cell.taskTitleLabel.textAlignment = NSTextAlignmentCenter;
+    cell.taskTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:24.0];
     cell.memberBackgroundView.hidden = YES;
     cell.timeLabel.hidden = YES;
   } else {
@@ -204,7 +201,7 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
     
     cell.timeLabel.text = [NSString stringWithFormat:@"%@/%@", minutesString, estimateString];
     
-    cell.numberLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
+    cell.numberLabel.text = [NSString stringWithFormat:@"#%ld", indexPath.row + 1];
     cell.taskTitleLabel.alpha = 0.72;
     cell.taskTitleLabel.text = task.taskDescription;
     
@@ -234,7 +231,7 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
   
   NSString *statusString;
   if (indexPath.section == 0) {
-    statusString = @"NOT YET STARTED";
+    statusString = @"TO DO";
   } else if (indexPath.section == 1) {
     statusString = @"IN PROGRESS";
   } else if (indexPath.section == 2) {
@@ -249,7 +246,7 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-  return CGSizeMake(self.view.frame.size.width, 20.0);
+  return CGSizeMake(self.view.frame.size.width, 25.0);
 }
 
 #pragma mark - Collection View Data Source

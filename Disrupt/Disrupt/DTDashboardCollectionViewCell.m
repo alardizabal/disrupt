@@ -23,29 +23,11 @@ static CGFloat const kDTDashCellSideMarginWidth = 20.0;
 
 - (instancetype)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
-  self.contentView.backgroundColor = [UIColor dtGoldColor];
+  self.contentView.backgroundColor = [UIColor grayColor];
   [self.contentView addSubview:self.projectNameLabel];
   [self.contentView addSubview:self.projectCompletionLabel];
   [self.contentView addSubview:self.separatorView];
-//  [self randomBackgroundColor];
   return self;
-}
-
-- (void)randomBackgroundColor {
-  
-  NSUInteger r = arc4random_uniform(3);
-  
-  UIColor *bgColor = nil;
-  if (r == 0) {
-    bgColor = [UIColor colorWithRed:30.0/255.0 green:144.0/255.0 blue:255.0/255.0 alpha:1.0];
-  } else if (r == 1) {
-    bgColor = [UIColor colorWithRed:30.0/255.0 green:255.0/255.0 blue:141.0/255.0 alpha:1.0];
-  } else if (r == 2) {
-    bgColor = [UIColor colorWithRed:255.0/255.0 green:30.0/255.0 blue:144.0/255.0 alpha:1.0];
-  } else if (r == 3) {
-    bgColor = [UIColor colorWithRed:255.0/255.0 green:141.0/255.0 blue:30.0/255.0 alpha:1.0];
-  }
-  self.backgroundColor = bgColor;
 }
 
 - (void)prepareForReuse {
@@ -68,8 +50,8 @@ static CGFloat const kDTDashCellSideMarginWidth = 20.0;
   x = fullWidth - 75.0 - kDTDashCellSideMarginWidth;
   self.projectCompletionLabel.frame = CGRectMake(x, y, 80.0, h);
   
-  x = 0.0, y = CGRectGetMaxY(self.contentView.frame) - 3.0;
-  w = self.contentView.bounds.size.width, h = 3.0;
+  x = 0.0, y = CGRectGetMaxY(self.contentView.frame) - 2.0;
+  w = self.contentView.bounds.size.width, h = 2.0;
   self.separatorView.frame = CGRectMake(x, y, w, h);
 }
 
@@ -121,6 +103,14 @@ static CGFloat const kDTDashCellSideMarginWidth = 20.0;
   }
   NSString *projectName = [name uppercaseString];
   _projectNameLabel.attributedText = [[NSAttributedString alloc] initWithString:projectName attributes:[self projectNameLabelAttributes]];
+}
+
+- (void)setHighlighted:(BOOL)highlighted {
+  if (highlighted) {
+    self.contentView.backgroundColor = [UIColor lightGrayColor];
+  } else {
+    self.contentView.backgroundColor = [UIColor grayColor];
+  }
 }
 
 @end

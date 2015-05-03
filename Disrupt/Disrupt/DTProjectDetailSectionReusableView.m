@@ -40,7 +40,7 @@ static const CGFloat kDTHorizontalPadding = 15.0;
 - (UILabel *)sectionTitleLabel {
   if (_sectionTitleLabel == nil) {
     _sectionTitleLabel = [UILabel new];
-    _sectionTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:12.0];
+    _sectionTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:16.0];
     _sectionTitleLabel.textColor = [UIColor whiteColor];
   }
   return _sectionTitleLabel;
