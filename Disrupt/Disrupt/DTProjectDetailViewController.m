@@ -257,7 +257,7 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
     }
   } else if (section == 1) {
     if (self.startedArray.count == 0) {
-      return 1;
+      return 1; 
     } else {
       return self.startedArray.count;
     }
