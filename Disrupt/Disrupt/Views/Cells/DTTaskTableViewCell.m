@@ -47,7 +47,7 @@
   return _taskNumberLabel;
 }
 
-- (UITextView *)taskDesciptionTextView {
+- (UITextView *)taskDescriptionTextView {
   if (_taskDescriptionTextView == nil) {
     _taskDescriptionTextView = [UITextView new];
     _taskDescriptionTextView.backgroundColor = [UIColor clearColor];
