@@ -43,6 +43,8 @@ static CGFloat const kDTTaskCellHeight = 50.0;
 - (void)viewDidLoad {
   [super viewDidLoad];
   
+  self.title = @"Create Project";
+  
   self.view.backgroundColor = [UIColor darkGrayColor];
   self.automaticallyAdjustsScrollViewInsets = NO;
   
@@ -57,8 +59,9 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   [self.view setNeedsLayout];
   [self.view layoutIfNeeded];
   
-  UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(tappedSaveButton:)];
-  self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+  [self.projectNameTextField becomeFirstResponder];
+  
+  [self setupNavBar];
 }
 
 #pragma mark - Layout
@@ -91,6 +94,26 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   
   x += horizontalMargin, y += verticalMargin, w -= 2 * horizontalMargin, h = kDTTaskCellHeight * [self.teamManager.teamMembers count];
   self.teamCollectionView.frame = CGRectMake(x, y, w, h);
+}
+
+- (void)setupNavBar {
+  UIImage *leftButtonImage = [UIImage imageNamed:@"icon-arrow-left"];
+  UIImage *leftButtonImagePressed = [UIImage imageNamed:@"icon-arrow-left"];
+  UIButton *leftButton = [UIButton new];
+  [leftButton setImage:leftButtonImage forState:UIControlStateNormal];
+  [leftButton setImage:leftButtonImagePressed forState:UIControlStateHighlighted];
+  leftButton.frame = CGRectMake(0.0, 0.0, 10.0, 20.0);
+  [leftButton addTarget:self action:@selector(tappedLeftBarButton:) forControlEvents:UIControlEventTouchUpInside];
+  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+  
+  UIImage *rightButtonImage = [UIImage imageNamed:@"icon-checkbox-normal"];
+  UIImage *rightButtonImagePressed = [UIImage imageNamed:@"icon-checkbox-selected"];
+  UIButton *rightButton = [UIButton new];
+  [rightButton setImage:rightButtonImage forState:UIControlStateNormal];
+  [rightButton setImage:rightButtonImagePressed forState:UIControlStateHighlighted];
+  rightButton.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
+  [rightButton addTarget:self action:@selector(tappedSaveButton:) forControlEvents:UIControlEventTouchUpInside];
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
 }
 
 #pragma mark - Lazy initialization
@@ -215,7 +238,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   NSInteger rowCount = [tableView numberOfRowsInSection:indexPath.section];
   NSInteger taskNumber = rowCount - indexPath.row - 1;
   cell.taskDesciptionTextView.delegate = self;
-  cell.taskNumberLabel.text = [NSString stringWithFormat:@"%d", taskNumber + 1];
+  cell.taskNumberLabel.text = [NSString stringWithFormat:@"%ld", taskNumber + 1];
   if (indexPath.row == 0) {
     cell.taskDesciptionTextView.userInteractionEnabled = YES;
     cell.taskDesciptionTextView.text = @"";
@@ -245,6 +268,21 @@ static CGFloat const kDTTaskCellHeight = 50.0;
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
   return YES;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+  
+  if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+    [tableView setSeparatorInset:UIEdgeInsetsZero];
+  }
+  
+  if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+    [tableView setLayoutMargins:UIEdgeInsetsZero];
+  }
+  
+  if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+    [cell setLayoutMargins:UIEdgeInsetsZero];
+  }
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -328,7 +366,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
   return 0.0;
 }
-
+  
 #pragma mark - Network Tasks
 
 - (void)postNewProject {
@@ -362,6 +400,10 @@ static CGFloat const kDTTaskCellHeight = 50.0;
 }
 
 #pragma mark - Actions
+- (void)tappedLeftBarButton:(id)sender {
+  [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)tappedSaveButton:(id)sender {
   [self postNewProject];
 }

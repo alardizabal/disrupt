@@ -17,7 +17,7 @@
     [self addSubview:self.taskDesciptionTextView];
     [self addSubview:self.taskMemberLabel];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.backgroundColor = [UIColor colorWithRed:0/255.0f green:200/255.0f blue:180/255.0f alpha:1.0];
+    self.backgroundColor = [UIColor colorWithRed:30/255.0f green:144/255.0f blue:255/255.0f alpha:1.0];
   }
   return self;
 }

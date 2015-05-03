@@ -27,8 +27,9 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   [super viewDidLoad];
     // Do any additional setup after loading the view.
   self.view.backgroundColor = [UIColor whiteColor];
-  self.navigationItem.title = @"Disrupt";
-  [self addLeftNavigationButton];
+  self.title = @"Disrupt";
+  
+//  [self addLeftNavigationButton];
   [self addRightNavigationButton];
   [self.view addSubview:self.projectCollectionView];
 }
