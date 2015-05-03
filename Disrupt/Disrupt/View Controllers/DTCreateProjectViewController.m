@@ -59,6 +59,8 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   [self.view setNeedsLayout];
   [self.view layoutIfNeeded];
   
+  [self.projectManager.tasks removeAllObjects];
+  [self.taskTableView reloadData];
   [self.projectNameTextField becomeFirstResponder];
   
   [self setupNavBar];
@@ -391,7 +393,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   
   [manager POST:URLString parameters:payload
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-    NSLog(@"JSON: %@", responseObject);
+    [self.navigationController popViewControllerAnimated:YES];
   }
         failure:
    ^(AFHTTPRequestOperation *operation, NSError *error) {
