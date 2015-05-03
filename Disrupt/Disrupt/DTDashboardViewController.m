@@ -156,9 +156,22 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   DTDashboardCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDTDashboardCellReuseId forIndexPath:indexPath];
   
-  NSString *projNameForCell = ((DTProjectModel*)self.projects[indexPath.row]).projectName;
-  NSNumber *projCompletePercent = ((DTProjectModel*)self.projects[indexPath.row]).percentComplete;
+  DTProjectModel *proj = self.projects[indexPath.row];
+  
+  NSString *projNameForCell = proj.projectName;
+  NSNumber *projCompletePercent = proj.percentComplete;
   [cell setProjectName:projNameForCell];
+  
+  NSString *percent = [NSString stringWithFormat:@"%@%%\n", projCompletePercent];
+  NSDictionary *smallAttributes = @{ NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:18.0 ],
+                                     NSForegroundColorAttributeName : [UIColor whiteColor] };
+  NSDictionary *largeAttributes = @{ NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:28.0 ],
+                                     NSForegroundColorAttributeName : [UIColor whiteColor] };
+  NSMutableAttributedString *percentAttributed = [[NSMutableAttributedString alloc] initWithString:percent attributes:largeAttributes];
+  NSAttributedString *complete = [[NSAttributedString alloc] initWithString:@"Complete" attributes:smallAttributes];
+  [percentAttributed appendAttributedString:complete];
+  cell.projectCompletionLabel.attributedText = percentAttributed;
+  
   return cell;
 }
 

@@ -22,7 +22,7 @@
       DTTask *dtTask = [[DTTask alloc] initWithJSONData:taskData];
       [self.projectTasks addObject:dtTask];
     }
-    self.percentComplete = @50;
+    self.percentComplete = jsonData[@"percent_complete"];
   }
   return self;
 }

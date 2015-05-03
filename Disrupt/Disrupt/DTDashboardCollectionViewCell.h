@@ -11,6 +11,10 @@
 @import UIKit;
 
 @interface DTDashboardCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic, strong) UILabel *projectCompletionLabel;
+
 - (void)setProjectName:(NSString *)name;
 - (void)setProjectPercentage:(NSNumber *)value;
+
 @end

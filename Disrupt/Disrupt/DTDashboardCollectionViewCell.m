@@ -13,7 +13,6 @@ static CGFloat const kDTDashCellSideMarginWidth = 20.0;
 @interface DTDashboardCollectionViewCell ()
 
 @property (nonatomic, strong) UILabel *projectNameLabel;
-@property (nonatomic, strong) UILabel *projectCompletionLabel;
 @property (nonatomic, strong) UIView *separatorView;
 
 @end
@@ -63,6 +62,8 @@ static CGFloat const kDTDashCellSideMarginWidth = 20.0;
   CGFloat x, y, w, h = 0.0;
   x = kDTDashCellSideMarginWidth, y = 0.0, w = fullWidth, h = fullHeight;
   self.projectNameLabel.frame = CGRectMake(x, 0.0, w, h);
+  
+  y = -5.0,
   w = CGRectGetWidth(self.projectCompletionLabel.bounds);
   x = fullWidth - 80.0 - kDTDashCellSideMarginWidth;
   self.projectCompletionLabel.frame = CGRectMake(x, y, 80.0, h);
@@ -88,15 +89,6 @@ static CGFloat const kDTDashCellSideMarginWidth = 20.0;
     _projectCompletionLabel.textColor = [UIColor whiteColor];
     _projectCompletionLabel.textAlignment = NSTextAlignmentCenter;
     _projectCompletionLabel.numberOfLines = 2;
-    NSString *percent = [NSString stringWithFormat:@"%@%%\n", @50];
-    NSDictionary *smallAttributes = @{ NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:18.0 ],
-                                  NSForegroundColorAttributeName : [UIColor whiteColor] };
-    NSDictionary *largeAttributes = @{ NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:28.0 ],
-                                       NSForegroundColorAttributeName : [UIColor whiteColor] };
-    NSMutableAttributedString *percentAttributed = [[NSMutableAttributedString alloc] initWithString:percent attributes:largeAttributes];
-    NSAttributedString *complete = [[NSAttributedString alloc] initWithString:@"Complete" attributes:smallAttributes];
-    [percentAttributed appendAttributedString:complete];
-    _projectCompletionLabel.attributedText = percentAttributed;
   }
   return _projectCompletionLabel;
 }
