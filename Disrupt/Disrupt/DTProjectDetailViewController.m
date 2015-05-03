@@ -36,7 +36,7 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
   
   CGFloat x = 0.0, y = 0.0, w = 0.0, h = 0.0;
   
-  x = 0.0, y = 0.0, w = self.view.bounds.size.width, h = self.view.bounds.size.height;
+  x = 0.0, y = -10.0, w = self.view.bounds.size.width, h = self.view.bounds.size.height;
   self.collectionView.frame = CGRectMake(x, y, w, h);
 }
 

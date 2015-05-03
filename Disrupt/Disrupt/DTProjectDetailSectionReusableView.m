@@ -19,7 +19,7 @@ static const CGFloat kDTHorizontalPadding = 15.0;
 - (instancetype)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
-    self.backgroundColor = [UIColor grayColor];
+    self.backgroundColor = [UIColor lightGrayColor];
     [self addSubview:self.sectionTitleLabel];
   }
   return self;
@@ -39,6 +39,8 @@ static const CGFloat kDTHorizontalPadding = 15.0;
 - (UILabel *)sectionTitleLabel {
   if (_sectionTitleLabel == nil) {
     _sectionTitleLabel = [UILabel new];
+    _sectionTitleLabel.alpha = 0.88;
+    _sectionTitleLabel.font = [UIFont boldSystemFontOfSize:12];
   }
   return _sectionTitleLabel;
 }
