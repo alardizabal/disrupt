@@ -20,4 +20,12 @@
   }
   return self;
 }
+
+- (DTUserModel *)assignedUser {
+  if (_assignedUser == nil) {
+    _assignedUser = [DTUserModel new];
+  }
+  return _assignedUser;
+}
+
 @end
