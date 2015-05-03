@@ -43,9 +43,9 @@ static CGFloat const kDTTaskCellHeight = 50.0;
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  self.title = @"Create Project";
+  self.title = @"NEW PROJECT";
   
-  self.view.backgroundColor = [UIColor darkGrayColor];
+  self.view.backgroundColor = [UIColor whiteColor];
   self.automaticallyAdjustsScrollViewInsets = NO;
   
   [self.view addSubview:self.projectNameTextField];
@@ -123,11 +123,11 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   if (_projectNameTextField == nil) {
     _projectNameTextField = [UITextField new];
     _projectNameTextField.delegate = self;
-    _projectNameTextField.placeholder = @"Project name";
+    _projectNameTextField.placeholder = @"PROJECT NAME";
     _projectNameTextField.textAlignment = NSTextAlignmentCenter;
     _projectNameTextField.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:28.0];
     _projectNameTextField.textColor = [UIColor whiteColor];
-    _projectNameTextField.tintColor = [UIColor colorWithRed:255.0/255.0 green:30.0/255.0 blue:144.0/255.0 alpha:1.0];
+    _projectNameTextField.tintColor = [UIColor dtBlueColor];
   }
   return _projectNameTextField;
 }
@@ -144,7 +144,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
     _taskNumberLabel = [UILabel new];
     _taskNumberLabel.text = @"#";
     _taskNumberLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20.0];
-    _taskNumberLabel.textColor = [UIColor whiteColor];
+    _taskNumberLabel.textColor = [UIColor dtBlueColor];
     _taskNumberLabel.textAlignment = NSTextAlignmentCenter;
   }
   return _taskNumberLabel;
@@ -155,7 +155,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
     _taskDescriptionLabel = [UILabel new];
     _taskDescriptionLabel.text = @"Task";
     _taskDescriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20.0];
-    _taskDescriptionLabel.textColor = [UIColor whiteColor];
+    _taskDescriptionLabel.textColor = [UIColor dtBlueColor];
     _taskDescriptionLabel.textAlignment = NSTextAlignmentCenter;
   }
   return _taskDescriptionLabel;
@@ -166,7 +166,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
     _taskMemberLabel = [UILabel new];
     _taskMemberLabel.text = @"Member";
     _taskMemberLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20.0];
-    _taskMemberLabel.textColor = [UIColor whiteColor];
+    _taskMemberLabel.textColor = [UIColor dtBlueColor];
     _taskMemberLabel.textAlignment = NSTextAlignmentCenter;
   }
   return _taskMemberLabel;

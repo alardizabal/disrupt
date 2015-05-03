@@ -25,10 +25,13 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 #pragma mark - View Life Cycle
 - (void)viewDidLoad {
   [super viewDidLoad];
-    // Do any additional setup after loading the view.
-  self.view.backgroundColor = [UIColor whiteColor];
-  self.title = @"Disrupt";
   
+  self.view.backgroundColor = [UIColor whiteColor];
+  self.title = @"DELEGATE";
+  NSDictionary *titleAttributes = @{ NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:28.0],
+                                     NSForegroundColorAttributeName : [UIColor whiteColor] };
+  [self.navigationController.navigationBar setTitleTextAttributes:titleAttributes];
+  self.navigationController.navigationBar.barTintColor = [UIColor dtBlueColor];
 //  [self addLeftNavigationButton];
   [self addRightNavigationButton];
   [self.view addSubview:self.projectCollectionView];
@@ -48,7 +51,7 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 - (void)viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
   
-  CGFloat x = 0.0, y = -10.0, w = 0.0, h = 0.0;
+  CGFloat x = 0.0, y = 20.0, w = 0.0, h = 0.0;
   w = CGRectGetWidth(self.view.bounds), h = CGRectGetHeight(self.view.bounds);
   self.projectCollectionView.frame = CGRectMake(x, y, w, h);
 }
@@ -72,7 +75,8 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   [settingsButton setImage:settingsImagePressed forState:UIControlStateHighlighted];
   settingsButton.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
   [settingsButton addTarget:self action:@selector(tappedRightBarButton:) forControlEvents:UIControlEventTouchUpInside];
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingsButton];
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(tappedRightBarButton:)];
+  self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 }
 
 #pragma mark
@@ -155,7 +159,6 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   NSString *projNameForCell = ((DTProjectModel*)self.projects[indexPath.row]).projectName;
   NSNumber *projCompletePercent = ((DTProjectModel*)self.projects[indexPath.row]).percentComplete;
   [cell setProjectName:projNameForCell];
-  [cell setProjectPercentage:projCompletePercent];
   return cell;
 }
 

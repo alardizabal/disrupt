@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		071B893C1AF61922009CF87E /* UIColor+Disrupt.m in Sources */ = {isa = PBXBuildFile; fileRef = 071B893B1AF61922009CF87E /* UIColor+Disrupt.m */; };
 		07F476211AF5507600808ECD /* DTCreateProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F476201AF5507600808ECD /* DTCreateProjectViewController.m */; };
 		07F476271AF550CB00808ECD /* DTTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F476261AF550CB00808ECD /* DTTaskTableViewCell.m */; };
 		07F4762B1AF5677300808ECD /* DTProjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F4762A1AF5677300808ECD /* DTProjectManager.m */; };
@@ -38,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		071B893A1AF61922009CF87E /* UIColor+Disrupt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Disrupt.h"; path = "Categories/UIColor+Disrupt.h"; sourceTree = "<group>"; };
+		071B893B1AF61922009CF87E /* UIColor+Disrupt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Disrupt.m"; path = "Categories/UIColor+Disrupt.m"; sourceTree = "<group>"; };
+		071B893D1AF619DC009CF87E /* Disrupt.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Disrupt.pch; sourceTree = "<group>"; };
 		07F4761F1AF5507600808ECD /* DTCreateProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTCreateProjectViewController.h; path = "View Controllers/DTCreateProjectViewController.h"; sourceTree = "<group>"; };
 		07F476201AF5507600808ECD /* DTCreateProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTCreateProjectViewController.m; path = "View Controllers/DTCreateProjectViewController.m"; sourceTree = "<group>"; };
 		07F476251AF550CB00808ECD /* DTTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTaskTableViewCell.h; path = Views/Cells/DTTaskTableViewCell.h; sourceTree = "<group>"; };
@@ -97,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		071B89391AF618E5009CF87E /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				071B893A1AF61922009CF87E /* UIColor+Disrupt.h */,
+				071B893B1AF61922009CF87E /* UIColor+Disrupt.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		07F4761E1AF54F6400808ECD /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +205,7 @@
 		CAE3990E1AF547B1004D3E89 /* Disrupt */ = {
 			isa = PBXGroup;
 			children = (
+				071B89391AF618E5009CF87E /* Categories */,
 				07F476281AF5675100808ECD /* Models */,
 				07F476221AF550A400808ECD /* Views */,
 				07F4761E1AF54F6400808ECD /* View Controllers */,
@@ -208,6 +222,7 @@
 				CAE3991C1AF547B1004D3E89 /* Images.xcassets */,
 				CAE399101AF547B1004D3E89 /* Info.plist */,
 				CAE399111AF547B1004D3E89 /* main.m */,
+				071B893D1AF619DC009CF87E /* Disrupt.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -378,6 +393,7 @@
 				15FDDDB61AF574F800B0BA7B /* DTProjectDetailCollectionViewCell.m in Sources */,
 				07F476211AF5507600808ECD /* DTCreateProjectViewController.m in Sources */,
 				CAE399451AF56036004D3E89 /* DTDashboardViewController.m in Sources */,
+				071B893C1AF61922009CF87E /* UIColor+Disrupt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +501,7 @@
 			baseConfigurationReference = DDACA5207A533CA5004C58AD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = Disrupt/Disrupt.pch;
 				INFOPLIST_FILE = Disrupt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -496,6 +513,7 @@
 			baseConfigurationReference = D85421A1DE7B49872597F7DD /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = Disrupt/Disrupt.pch;
 				INFOPLIST_FILE = Disrupt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
