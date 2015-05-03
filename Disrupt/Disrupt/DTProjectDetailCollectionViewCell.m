@@ -15,7 +15,6 @@ static CGFloat const kDTMemberImageViewDiameter = 40.0;
 @interface DTProjectDetailCollectionViewCell ()
 
 @property (nonatomic, strong) UIView *separatorView;
-@property (nonatomic, strong) UIView *memberBackgroundView;
 
 @end
 
@@ -97,6 +96,7 @@ static CGFloat const kDTMemberImageViewDiameter = 40.0;
 - (UIView *)memberBackgroundView {
   if (_memberBackgroundView == nil) {
     _memberBackgroundView = [UIView new];
+    _memberBackgroundView.hidden = NO;
     _memberBackgroundView.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:141.0/255.0 blue:30.0/255.0 alpha:1.0];
     _memberBackgroundView.layer.cornerRadius = (kDTMemberImageViewDiameter + kDTPhotoBorderWidth * 2.0) / 2.0;
   }

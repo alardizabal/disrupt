@@ -178,15 +178,15 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   return 0.0;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-  DTDashboardCollectionViewCell *cell = (DTDashboardCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
-  cell.contentView.backgroundColor = [UIColor lightGrayColor];
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-  DTDashboardCollectionViewCell *cell = (DTDashboardCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
-  cell.contentView.backgroundColor = [UIColor yellowColor];
-}
+//- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+//  DTDashboardCollectionViewCell *cell = (DTDashboardCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+//  cell.contentView.backgroundColor = [UIColor lightGrayColor];
+//}
+//
+//- (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+//  DTDashboardCollectionViewCell *cell = (DTDashboardCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+//  cell.contentView.backgroundColor = [UIColor yellowColor];
+//}
 
 #pragma mark - Navigation Actions
 - (void) tappedRightBarButton:(id) sender {

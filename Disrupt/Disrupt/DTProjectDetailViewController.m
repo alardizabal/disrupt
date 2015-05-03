@@ -162,6 +162,7 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
   if (isEmptyState == YES) {
     cell.taskTitleLabel.alpha = 0.3;
     cell.taskTitleLabel.text = @"No tasks found.";
+    cell.memberBackgroundView.hidden = YES;
   } else {
     cell.numberLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
     cell.taskTitleLabel.alpha = 0.72;
@@ -177,6 +178,7 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
     } else if ([task.assignedUser.userName isEqualToString:@"Kevin"]) {
       assignedUserImage = [UIImage imageNamed:@"Kevin"];
     }
+    cell.memberBackgroundView.hidden = NO;
     cell.memberImageView.image = assignedUserImage;
   }
   

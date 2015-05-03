@@ -15,4 +15,5 @@
 @property (nonatomic, strong) NSString *status;
 @property (nonatomic, strong) NSString *taskDescription;
 @property (nonatomic, strong) NSString *taskId;
+@property (nonatomic, strong) NSString *estimate;
 @end
