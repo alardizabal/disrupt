@@ -11,6 +11,8 @@
 #import "DTProjectDetailCollectionViewCell.h"
 #import "DTProjectDetailSectionReusableView.h"
 
+#import "DTTask.h"
+
 static CGFloat const kDTCollectionViewCellHeight = 60.0;
 
 static NSString * const kDTProjectDetailCellReuseId = @"_dt.reuse.projectDetailCell";
@@ -40,7 +42,7 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
   
   CGFloat x = 0.0, y = 0.0, w = 0.0, h = 0.0;
   
-  x = 0.0, y = -10.0, w = self.view.bounds.size.width, h = self.view.bounds.size.height;
+  x = 0.0, y = -10.0, w = self.view.bounds.size.width, h = self.view.bounds.size.height + 10.0;
   self.collectionView.frame = CGRectMake(x, y, w, h);
 }
 
@@ -85,7 +87,8 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
   
   cell.numberLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
 //  cell.taskTitleLabel.text = @"This is a title text label.";
-  cell.taskTitleLabel.text = self.project.projectTasks[indexPath.row];
+  DTTask *task = self.project.projectTasks[indexPath.row];
+  cell.taskTitleLabel.text = task.taskDescription;
   
   return cell;
 }

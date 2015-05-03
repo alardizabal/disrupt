@@ -29,6 +29,7 @@ static CGFloat const kDTDashCellSideMarginWidth = 10.0;
 
 - (void)prepareForReuse {
   [super prepareForReuse];
+  self.contentView.backgroundColor = [UIColor yellowColor];
 }
 
 #pragma mark - Layout
@@ -49,7 +50,6 @@ static CGFloat const kDTDashCellSideMarginWidth = 10.0;
 - (UILabel *)projectNameLabel {
   if (_projectNameLabel == nil) {
     _projectNameLabel = [UILabel new];
-    _projectNameLabel.attributedText = [[NSAttributedString alloc] initWithString:@"" attributes:[self projectNameLabelAttributes]];
   }
   return _projectNameLabel;
 }
@@ -68,6 +68,12 @@ static CGFloat const kDTDashCellSideMarginWidth = 10.0;
           };
 }
 
+- (NSDictionary *) projectPercentLabelAttributes {
+  return @{
+           NSFontAttributeName: [UIFont fontWithName:@"MarkerFelt-Thin" size:14]
+          };
+}
+
 #pragma mark - Setters
 - (void)setProjectName:(NSString *)name {
   
@@ -76,7 +82,7 @@ static CGFloat const kDTDashCellSideMarginWidth = 10.0;
 
 - (void)setProjectPercentage:(NSNumber *)value {
   NSString *stringValue = value.stringValue;
-  _projectCompletionLabel.text = [[NSString alloc] initWithFormat:@"%@%% Completed", stringValue];
+  _projectCompletionLabel.attributedText = [[NSAttributedString alloc] initWithString: [[NSString alloc] initWithFormat:@"%@%% Completed", stringValue] attributes:[self projectPercentLabelAttributes]];
   [self setNeedsLayout];
 }
 

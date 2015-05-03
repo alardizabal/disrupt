@@ -46,7 +46,7 @@ static CGFloat const kDTMemberImageViewDiameter = 40.0;
   w = 10.0, h = self.contentView.frame.size.height;
   self.numberLabel.frame = CGRectMake(x, y, w, h);
   
-  x += 25.0, w = self.contentView.bounds.size.width - kDTMemberImageViewDiameter - x;
+  x += 25.0, w = self.contentView.bounds.size.width - kDTMemberImageViewDiameter - kDTPhotoBorderWidth * 2 - kDTHorizontalInset * 2 - x,
   self.taskTitleLabel.frame = CGRectMake(x, y, w, h);
   
   x = self.contentView.bounds.size.width - kDTHorizontalInset - kDTMemberImageViewDiameter - kDTPhotoBorderWidth * 2.0,
@@ -78,6 +78,8 @@ static CGFloat const kDTMemberImageViewDiameter = 40.0;
     _taskTitleLabel = [UILabel new];
     _taskTitleLabel.alpha = 0.72;
     _taskTitleLabel.font = [UIFont boldSystemFontOfSize:14.0];
+    _taskTitleLabel.numberOfLines = 0;
+    _taskTitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
   }
   return _taskTitleLabel;
 }

@@ -30,7 +30,6 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   self.navigationItem.title = @"Disrupt";
   [self addLeftNavigationButton];
   [self addRightNavigationButton];
-  
   [self.view addSubview:self.projectCollectionView];
   [self requestProjects];
 }
@@ -42,12 +41,13 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  [self.projectCollectionView reloadData];
 }
 
 - (void)viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
   
-  CGFloat x = 0.0, y = 0.0, w = 0.0, h = 0.0;
+  CGFloat x = 0.0, y = -10.0, w = 0.0, h = 0.0;
   w = CGRectGetWidth(self.view.bounds), h = CGRectGetHeight(self.view.bounds);
   self.projectCollectionView.frame = CGRectMake(x, y, w, h);
 }
@@ -148,9 +148,7 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-  DTDashboardCollectionViewCell *cell =
-  [collectionView dequeueReusableCellWithReuseIdentifier:kDTDashboardCellReuseId
-                                            forIndexPath:indexPath];
+  DTDashboardCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDTDashboardCellReuseId forIndexPath:indexPath];
   NSString *projNameForCell = ((DTProjectModel*)self.projects[indexPath.row]).projectName;
   NSNumber *projCompletePercent = ((DTProjectModel*)self.projects[indexPath.row]).percentComplete;
   [cell setProjectName:projNameForCell];
@@ -167,11 +165,23 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   
   DTProjectDetailViewController *vc = [DTProjectDetailViewController new];
   vc.project = proj;
+  DTDashboardCollectionViewCell *cell = (DTDashboardCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+  cell.contentView.backgroundColor = [UIColor lightGrayColor];
   [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
   return 2.0;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+  DTDashboardCollectionViewCell *cell = (DTDashboardCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+  cell.contentView.backgroundColor = [UIColor lightGrayColor];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+  DTDashboardCollectionViewCell *cell = (DTDashboardCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+  cell.contentView.backgroundColor = [UIColor yellowColor];
 }
 
 #pragma mark - Navigation Actions
