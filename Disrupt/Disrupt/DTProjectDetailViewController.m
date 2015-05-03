@@ -84,13 +84,13 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
   DTProjectDetailCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDTProjectDetailCellReuseId forIndexPath:indexPath];
   
   cell.numberLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
-  cell.taskTitleLabel.text = @"This is a title text label.";
+//  cell.taskTitleLabel.text = @"This is a title text label.";
+  cell.taskTitleLabel.text = self.project.projectTasks[indexPath.row];
   
   return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView
-didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
@@ -120,7 +120,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - Collection View Data Source
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-  return 4;
+  return self.project.projectTasks.count;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
