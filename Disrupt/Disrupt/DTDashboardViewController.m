@@ -167,6 +167,7 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   vc.project = proj;
   DTDashboardCollectionViewCell *cell = (DTDashboardCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
   cell.contentView.backgroundColor = [UIColor lightGrayColor];
+  
   [self.navigationController pushViewController:vc animated:YES];
 }
 

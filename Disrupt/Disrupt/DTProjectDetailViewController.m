@@ -40,6 +40,7 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
   [self.view addSubview:self.collectionView];
   
   [self setupNavBar];
+  [self createStageArrays];
 }
 
 - (void)createStageArrays {
@@ -50,7 +51,7 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
   NSMutableArray *doneArr = [NSMutableArray new];
   
   for (DTTask *task in self.project.projectTasks) {
-    if ([task.status isEqualToString:@"non_started"]) {
+    if ([task.status isEqualToString:@"not_started"]) {
       [inactiveArr addObject:task];
     } else if ([task.status isEqualToString:@"in_progress"]) {
       [startedArr addObject:task];
@@ -158,6 +159,7 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
     }
   }
   
+  cell.numberLabel.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
   if (isEmptyState == YES) {
     cell.taskTitleLabel.text = @"No tasks found.";
   } else {

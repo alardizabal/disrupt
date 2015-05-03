@@ -21,9 +21,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-//  DTDashboardViewController *vc = [DTDashboardViewController new];
+  DTDashboardViewController *vc = [DTDashboardViewController new];
 //  DTCreateProjectViewController *vc = [DTCreateProjectViewController new];
-  DTProjectDetailViewController *vc = [DTProjectDetailViewController new];
+  //DTProjectDetailViewController *vc = [DTProjectDetailViewController new];
 
   UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
   navController.navigationBar.translucent = NO;
