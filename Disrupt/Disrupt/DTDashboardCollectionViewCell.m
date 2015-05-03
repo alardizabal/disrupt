@@ -24,7 +24,7 @@ static CGFloat const kDTDashCellSideMarginWidth = 20.0;
 
 - (instancetype)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
-  self.contentView.backgroundColor = [UIColor colorWithRed:30/255.0f green:144/255.0f blue:255/255.0f alpha:1.0];
+  self.contentView.backgroundColor = [UIColor dtGoldColor];
   [self.contentView addSubview:self.projectNameLabel];
   [self.contentView addSubview:self.projectCompletionLabel];
   [self.contentView addSubview:self.separatorView];
@@ -51,21 +51,21 @@ static CGFloat const kDTDashCellSideMarginWidth = 20.0;
 
 - (void)prepareForReuse {
   [super prepareForReuse];
-  self.contentView.backgroundColor = [UIColor colorWithRed:30.0/255.0f green:144.0/255.0f blue:255.0/255.0f alpha:1.0];
-  [self randomBackgroundColor];
 }
 
 #pragma mark - Layout
 
 - (void)layoutSubviews {
   [super layoutSubviews];
+  CGFloat fullWidth = CGRectGetWidth(self.contentView.bounds),
+  fullHeight = CGRectGetHeight(self.contentView.bounds);
+  
   CGFloat x, y, w, h = 0.0;
-  x = kDTDashCellSideMarginWidth, y = 0.0, w = CGRectGetWidth(self.contentView.bounds), h = CGRectGetHeight(self.contentView.bounds);
+  x = kDTDashCellSideMarginWidth, y = 0.0, w = fullWidth, h = fullHeight;
   self.projectNameLabel.frame = CGRectMake(x, 0.0, w, h);
-  [self.projectCompletionLabel sizeToFit];
   w = CGRectGetWidth(self.projectCompletionLabel.bounds);
-  x = CGRectGetWidth(self.contentView.bounds) - w - kDTDashCellSideMarginWidth;
-  self.projectCompletionLabel.frame = CGRectMake(x, y, w, h);
+  x = fullWidth - 100.0 - kDTDashCellSideMarginWidth;
+  self.projectCompletionLabel.frame = CGRectMake(x, y, 100.0, h);
   
   x = 0.0, y = CGRectGetMaxY(self.contentView.frame) - 3.0;
   w = self.contentView.bounds.size.width, h = 3.0;
@@ -86,6 +86,17 @@ static CGFloat const kDTDashCellSideMarginWidth = 20.0;
   if (_projectCompletionLabel == nil) {
     _projectCompletionLabel = [UILabel new];
     _projectCompletionLabel.textColor = [UIColor whiteColor];
+    _projectCompletionLabel.textAlignment = NSTextAlignmentCenter;
+    _projectCompletionLabel.numberOfLines = 2;
+    NSString *percent = [NSString stringWithFormat:@"%@%%\n", @50];
+    NSDictionary *smallAttributes = @{ NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:18.0 ],
+                                  NSForegroundColorAttributeName : [UIColor whiteColor] };
+    NSDictionary *largeAttributes = @{ NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:28.0 ],
+                                       NSForegroundColorAttributeName : [UIColor whiteColor] };
+    NSMutableAttributedString *percentAttributed = [[NSMutableAttributedString alloc] initWithString:percent attributes:largeAttributes];
+    NSAttributedString *complete = [[NSAttributedString alloc] initWithString:@"Complete" attributes:smallAttributes];
+    [percentAttributed appendAttributedString:complete];
+    _projectCompletionLabel.attributedText = percentAttributed;
   }
   return _projectCompletionLabel;
 }
@@ -93,8 +104,7 @@ static CGFloat const kDTDashCellSideMarginWidth = 20.0;
 - (UIView *)separatorView {
   if (_separatorView == nil) {
     _separatorView = [UIView new];
-    _separatorView.backgroundColor = [UIColor blackColor];
-    _separatorView.alpha = 0.88;
+    _separatorView.backgroundColor = [UIColor whiteColor];
   }
   return _separatorView;
 }
@@ -102,13 +112,13 @@ static CGFloat const kDTDashCellSideMarginWidth = 20.0;
 #pragma mark - Code Tidiness Helpers
 - (NSDictionary *) projectNameLabelAttributes {
   return @{
-            NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:18]
+            NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:28.0]
           };
 }
 
 - (NSDictionary *) projectPercentLabelAttributes {
   return @{
-           NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:14]
+           NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:28.0]
           };
 }
 
@@ -117,13 +127,8 @@ static CGFloat const kDTDashCellSideMarginWidth = 20.0;
   if (name == nil) {
     name = @"UNNAMED";
   }
-  _projectNameLabel.attributedText = [[NSAttributedString alloc] initWithString:name attributes:[self projectNameLabelAttributes]];
-}
-
-- (void)setProjectPercentage:(NSNumber *)value {
-  NSString *stringValue = value.stringValue;
-  _projectCompletionLabel.attributedText = [[NSAttributedString alloc] initWithString: [[NSString alloc] initWithFormat:@"%@%% Completed", stringValue] attributes:[self projectPercentLabelAttributes]];
-  [self setNeedsLayout];
+  NSString *projectName = [name uppercaseString];
+  _projectNameLabel.attributedText = [[NSAttributedString alloc] initWithString:projectName attributes:[self projectNameLabelAttributes]];
 }
 
 @end
