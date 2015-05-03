@@ -29,7 +29,8 @@
 - (UILabel *)nameLabel {
   if (_nameLabel == nil) {
     _nameLabel = [UILabel new];
-    _nameLabel.font = [UIFont fontWithName:@"Helvetica" size:30.0];
+    _nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20.0];
+    _nameLabel.textColor = [UIColor whiteColor];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
   }
   return _nameLabel;
