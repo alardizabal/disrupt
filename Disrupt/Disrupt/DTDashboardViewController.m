@@ -31,7 +31,6 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   [self addLeftNavigationButton];
   [self addRightNavigationButton];
   [self.view addSubview:self.projectCollectionView];
-  [self requestProjects];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,6 +40,7 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  [self requestProjects];
   [self.projectCollectionView reloadData];
 }
 
@@ -128,6 +128,7 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 
 #pragma mark - Network Calls
 - (void) requestProjects {
+  [self.projects removeAllObjects];
   NSString *URLStr = @"http://api.localhost.local:3040/dashboard";
   NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:URLStr]];
   NSData *data = [NSURLConnection sendSynchronousRequest:request
@@ -137,7 +138,7 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   NSArray *projects = json[@"response"][@"data"][@"projects"];
   for (NSDictionary *project in projects) {
     DTProjectModel *projModel = [[DTProjectModel alloc] initWithJSONData:project];
-    [self.projects addObject:projModel];
+    [self.projects insertObject:projModel atIndex:0];
   }
 }
 
