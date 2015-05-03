@@ -104,21 +104,24 @@ static CGFloat const kDTTaskCellHeight = 50.0;
 }
 
 - (void)setupNavBar {
-  UIImage *leftButtonImage = [UIImage imageNamed:@"icon-arrow-left"];
+  UIImage *leftButtonImage = [[UIImage imageNamed:@"icon-arrow-left"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
   UIImage *leftButtonImagePressed = [UIImage imageNamed:@"icon-arrow-left"];
   UIButton *leftButton = [UIButton new];
   [leftButton setImage:leftButtonImage forState:UIControlStateNormal];
   [leftButton setImage:leftButtonImagePressed forState:UIControlStateHighlighted];
   leftButton.frame = CGRectMake(0.0, 0.0, 10.0, 20.0);
+  leftButton.tintColor = [UIColor whiteColor];
   [leftButton addTarget:self action:@selector(tappedLeftBarButton:) forControlEvents:UIControlEventTouchUpInside];
   self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
   
-  UIImage *rightButtonImage = [UIImage imageNamed:@"icon-checkbox-normal"];
+  UIImage *rightButtonImage = [[UIImage imageNamed:@"icon-checkbox-normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
   UIImage *rightButtonImagePressed = [UIImage imageNamed:@"icon-checkbox-selected"];
   UIButton *rightButton = [UIButton new];
+  rightButton.imageEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 7.0, 0.0);
   [rightButton setImage:rightButtonImage forState:UIControlStateNormal];
   [rightButton setImage:rightButtonImagePressed forState:UIControlStateHighlighted];
   rightButton.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
+  rightButton.tintColor = [UIColor whiteColor];
   [rightButton addTarget:self action:@selector(tappedSaveButton:) forControlEvents:UIControlEventTouchUpInside];
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
 }

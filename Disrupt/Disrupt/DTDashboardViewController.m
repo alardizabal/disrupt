@@ -68,14 +68,16 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 }
 
 - (void) addRightNavigationButton {
-  UIImage *settingsImage = [UIImage imageNamed:@"icon-pluscircle-normal"];
-  UIImage *settingsImagePressed = [UIImage imageNamed:@"icon-pluscircle-selected"];
+  UIImage *settingsImage = [[UIImage imageNamed:@"icon-plus"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+  UIImage *settingsImagePressed = [UIImage imageNamed:@"icon-plus"];
   UIButton *settingsButton = [UIButton new];
   [settingsButton setImage:settingsImage forState:UIControlStateNormal];
+  settingsButton.tintColor = [UIColor whiteColor];
   [settingsButton setImage:settingsImagePressed forState:UIControlStateHighlighted];
+  settingsButton.imageEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 8.0, 0.0);
   settingsButton.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
   [settingsButton addTarget:self action:@selector(tappedRightBarButton:) forControlEvents:UIControlEventTouchUpInside];
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(tappedRightBarButton:)];
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingsButton];
   self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 }
 

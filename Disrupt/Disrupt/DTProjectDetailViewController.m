@@ -77,18 +77,24 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
 }
 
 - (void)setupNavBar {
-  UIImage *leftButtonImage = [UIImage imageNamed:@"icon-arrow-left"];
+  
+//  theImageView.image = [theImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+//  [theImageView setTintColor:[UIColor redColor]];
+  
+  UIImage *leftButtonImage = [[UIImage imageNamed:@"icon-arrow-left"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
   UIImage *leftButtonImagePressed = [UIImage imageNamed:@"icon-arrow-left"];
   UIButton *leftButton = [UIButton new];
+  leftButton.tintColor = [UIColor whiteColor];
   [leftButton setImage:leftButtonImage forState:UIControlStateNormal];
   [leftButton setImage:leftButtonImagePressed forState:UIControlStateHighlighted];
   leftButton.frame = CGRectMake(0.0, 0.0, 10.0, 20.0);
   [leftButton addTarget:self action:@selector(tappedLeftBarButton:) forControlEvents:UIControlEventTouchUpInside];
   self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
   
-  UIImage *rightButtonImage = [UIImage imageNamed:@"icon-send-airplane-normal"];
+  UIImage *rightButtonImage = [[UIImage imageNamed:@"icon-send-airplane-normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
   UIImage *rightButtonImagePressed = [UIImage imageNamed:@"icon-send-airplane-selected"];
   UIButton *rightButton = [UIButton new];
+  rightButton.tintColor = [UIColor whiteColor];
   [rightButton setImage:rightButtonImage forState:UIControlStateNormal];
   [rightButton setImage:rightButtonImagePressed forState:UIControlStateHighlighted];
   rightButton.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
