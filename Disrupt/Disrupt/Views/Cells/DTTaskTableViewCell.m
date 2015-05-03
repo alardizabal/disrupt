@@ -13,10 +13,11 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
   if (self) {
-    [self addSubview:self.taskTextView];
-    [self addSubview:self.teamMemberLabel];
+    [self addSubview:self.taskNumberLabel];
+    [self addSubview:self.taskDesciptionTextView];
+    [self addSubview:self.taskMemberLabel];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.backgroundColor = [UIColor magentaColor];
+    self.backgroundColor = [UIColor colorWithRed:0/255.0f green:200/255.0f blue:180/255.0f alpha:1.0];
   }
   return self;
 }
@@ -26,32 +27,46 @@
   
   CGFloat fullWidth = CGRectGetWidth(self.contentView.frame);
   
-  CGFloat x = 0.0, y = 0.0, w = fullWidth * 0.7, h = CGRectGetHeight(self.contentView.frame);
-  self.taskTextView.frame = CGRectMake(x, y, w, h);
+  CGFloat x = 0.0, y = 0.0, w = 50.0, h = CGRectGetHeight(self.contentView.frame);
+  self.taskNumberLabel.frame = CGRectMake(x, y, w, h);
   
-  x += w, w = fullWidth - w;
-  self.teamMemberLabel.frame = CGRectMake(x, y, w, h);
+  x += w, w = fullWidth - 150.0;
+  self.taskDesciptionTextView.frame = CGRectMake(x, y, w, h);
+  
+  x += w, w = 100.0;
+  self.taskMemberLabel.frame = CGRectMake(x, y, w, h);
 }
 
-- (UITextView *)taskTextView {
-  if (_taskTextView == nil) {
-    _taskTextView = [UITextView new];
-    _taskTextView.backgroundColor = [UIColor clearColor];
-    _taskTextView.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20.0];
-    _taskTextView.textColor = [UIColor whiteColor];
-    _taskTextView.textContainerInset = UIEdgeInsetsMake(10.0, 20.0, 0.0, 0.0);
+- (UILabel *)taskNumberLabel {
+  if (_taskNumberLabel == nil) {
+    _taskNumberLabel = [UILabel new];
+    _taskNumberLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20.0];
+    _taskNumberLabel.textColor = [UIColor whiteColor];
+    _taskNumberLabel.textAlignment = NSTextAlignmentCenter;
   }
-  return _taskTextView;
+  return _taskNumberLabel;
 }
 
-- (UILabel *)teamMemberLabel {
-  if (_teamMemberLabel == nil) {
-    _teamMemberLabel = [UILabel new];
-    _teamMemberLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20.0];
-    _teamMemberLabel.textColor = [UIColor whiteColor];
-    _teamMemberLabel.textAlignment = NSTextAlignmentCenter;
+- (UITextView *)taskDesciptionTextView {
+  if (_taskDesciptionTextView == nil) {
+    _taskDesciptionTextView = [UITextView new];
+    _taskDesciptionTextView.backgroundColor = [UIColor clearColor];
+    _taskDesciptionTextView.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20.0];
+    _taskDesciptionTextView.textColor = [UIColor whiteColor];
+    _taskDesciptionTextView.textContainerInset = UIEdgeInsetsMake(10.0, 20.0, 0.0, 0.0);
+    _taskDesciptionTextView.textAlignment = NSTextAlignmentCenter;
   }
-  return _teamMemberLabel;
+  return _taskDesciptionTextView;
+}
+
+- (UILabel *)taskMemberLabel {
+  if (_taskMemberLabel == nil) {
+    _taskMemberLabel = [UILabel new];
+    _taskMemberLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20.0];
+    _taskMemberLabel.textColor = [UIColor whiteColor];
+    _taskMemberLabel.textAlignment = NSTextAlignmentCenter;
+  }
+  return _taskMemberLabel;
 }
 
 @end
