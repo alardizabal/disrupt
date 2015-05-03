@@ -239,17 +239,17 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   DTTaskTableViewCell *cell = (DTTaskTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kDTTaskReuseIdentifier];
   NSInteger rowCount = [tableView numberOfRowsInSection:indexPath.section];
   NSInteger taskNumber = rowCount - indexPath.row - 1;
-  cell.taskDesciptionTextView.delegate = self;
+  cell.taskDescriptionTextView.delegate = self;
   cell.taskNumberLabel.text = [NSString stringWithFormat:@"%ld", taskNumber + 1];
   if (indexPath.row == 0) {
-    cell.taskDesciptionTextView.userInteractionEnabled = YES;
-    cell.taskDesciptionTextView.text = @"";
+    cell.taskDescriptionTextView.userInteractionEnabled = YES;
+    cell.taskDescriptionTextView.text = @"";
     cell.taskMemberLabel.text = @"";
   } else {
-    cell.taskDesciptionTextView.userInteractionEnabled = NO;
+    cell.taskDescriptionTextView.userInteractionEnabled = NO;
     if (taskNumber < [self.projectManager.tasks count]) {
       DTTask *task = self.projectManager.tasks[taskNumber];
-      cell.taskDesciptionTextView.text = task.taskDescription;
+      cell.taskDescriptionTextView.text = task.taskDescription;
       cell.taskMemberLabel.text = task.assignedUser.userName;
     }
   }

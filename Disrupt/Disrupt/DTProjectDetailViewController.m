@@ -166,6 +166,18 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
     cell.numberLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
     cell.taskTitleLabel.alpha = 0.72;
     cell.taskTitleLabel.text = task.taskDescription;
+    
+    UIImage *assignedUserImage = nil;
+    if ([task.assignedUser.userName isEqualToString:@"Al"]) {
+      assignedUserImage = [UIImage imageNamed:@"Al"];
+    } else if ([task.assignedUser.userName isEqualToString:@"Danny"]) {
+      assignedUserImage = [UIImage imageNamed:@"Danny"];
+    } else if ([task.assignedUser.userName isEqualToString:@"Rich"]) {
+      assignedUserImage = [UIImage imageNamed:@"Rich"];
+    } else if ([task.assignedUser.userName isEqualToString:@"Kevin"]) {
+      assignedUserImage = [UIImage imageNamed:@"Kevin"];
+    }
+    cell.memberImageView.image = assignedUserImage;
   }
   
   return cell;

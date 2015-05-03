@@ -11,7 +11,7 @@
 @interface DTTaskTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *taskNumberLabel;
-@property (nonatomic, strong) UITextView *taskDesciptionTextView;
+@property (nonatomic, strong) UITextView *taskDescriptionTextView;
 @property (nonatomic, strong) UILabel *taskMemberLabel;
 
 @end

@@ -14,7 +14,7 @@
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
   if (self) {
     [self addSubview:self.taskNumberLabel];
-    [self addSubview:self.taskDesciptionTextView];
+    [self addSubview:self.taskDescriptionTextView];
     [self addSubview:self.taskMemberLabel];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.backgroundColor = [UIColor colorWithRed:30/255.0f green:144/255.0f blue:255/255.0f alpha:1.0];
@@ -31,7 +31,7 @@
   self.taskNumberLabel.frame = CGRectMake(x, y, w, h);
   
   x += w, w = fullWidth - 150.0;
-  self.taskDesciptionTextView.frame = CGRectMake(x, y, w, h);
+  self.taskDescriptionTextView.frame = CGRectMake(x, y, w, h);
   
   x += w, w = 100.0;
   self.taskMemberLabel.frame = CGRectMake(x, y, w, h);
@@ -48,15 +48,16 @@
 }
 
 - (UITextView *)taskDesciptionTextView {
-  if (_taskDesciptionTextView == nil) {
-    _taskDesciptionTextView = [UITextView new];
-    _taskDesciptionTextView.backgroundColor = [UIColor clearColor];
-    _taskDesciptionTextView.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20.0];
-    _taskDesciptionTextView.textColor = [UIColor whiteColor];
-    _taskDesciptionTextView.textContainerInset = UIEdgeInsetsMake(10.0, 20.0, 0.0, 0.0);
-    _taskDesciptionTextView.textAlignment = NSTextAlignmentCenter;
+  if (_taskDescriptionTextView == nil) {
+    _taskDescriptionTextView = [UITextView new];
+    _taskDescriptionTextView.backgroundColor = [UIColor clearColor];
+    _taskDescriptionTextView.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20.0];
+    _taskDescriptionTextView.textColor = [UIColor whiteColor];
+    _taskDescriptionTextView.textContainerInset = UIEdgeInsetsMake(10.0, 20.0, 0.0, 0.0);
+    _taskDescriptionTextView.textAlignment = NSTextAlignmentCenter;
+    _taskDescriptionTextView.tintColor = [UIColor colorWithRed:255.0/255.0 green:30.0/255.0 blue:144.0/255.0 alpha:1.0];
   }
-  return _taskDesciptionTextView;
+  return _taskDescriptionTextView;
 }
 
 - (UILabel *)taskMemberLabel {

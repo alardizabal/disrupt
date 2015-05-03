@@ -87,7 +87,6 @@ static CGFloat const kDTMemberImageViewDiameter = 40.0;
 - (UIImageView *)memberImageView {
   if (_memberImageView == nil) {
     _memberImageView = [UIImageView new];
-    _memberImageView.image = [UIImage imageNamed:@"Al"];
     _memberImageView.layer.cornerRadius = kDTMemberImageViewDiameter / 2.0;
     _memberImageView.contentMode = UIViewContentModeScaleAspectFill;
     _memberImageView.clipsToBounds = YES;
@@ -98,7 +97,7 @@ static CGFloat const kDTMemberImageViewDiameter = 40.0;
 - (UIView *)memberBackgroundView {
   if (_memberBackgroundView == nil) {
     _memberBackgroundView = [UIView new];
-    _memberBackgroundView.backgroundColor = [UIColor blackColor];
+    _memberBackgroundView.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:141.0/255.0 blue:30.0/255.0 alpha:1.0];
     _memberBackgroundView.layer.cornerRadius = (kDTMemberImageViewDiameter + kDTPhotoBorderWidth * 2.0) / 2.0;
   }
   return _memberBackgroundView;
