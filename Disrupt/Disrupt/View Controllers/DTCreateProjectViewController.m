@@ -127,6 +127,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
     _projectNameTextField.textAlignment = NSTextAlignmentCenter;
     _projectNameTextField.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:28.0];
     _projectNameTextField.textColor = [UIColor whiteColor];
+    _projectNameTextField.tintColor = [UIColor colorWithRed:255.0/255.0 green:30.0/255.0 blue:144.0/255.0 alpha:1.0];
   }
   return _projectNameTextField;
 }
