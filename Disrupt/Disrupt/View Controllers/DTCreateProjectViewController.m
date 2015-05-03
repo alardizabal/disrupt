@@ -182,7 +182,21 @@ static CGFloat const kDTTaskCellHeight = 50.0;
 - (DTTeamManager *)teamManager {
   if (_teamManager == nil) {
     _teamManager = [DTTeamManager sharedManager];
-    _teamManager.teamMembers = [[NSMutableArray alloc] initWithArray:@[@"Al", @"Danny", @"Kevin", @"Rich"]];
+    
+    DTUserModel *al = [DTUserModel new];
+    al.userName = @"Al";
+    al.userId = @"DUVJT93474LOT2472";
+    DTUserModel *rich = [DTUserModel new];
+    rich.userName = @"Rich";
+    rich.userId = @"DUDTI75445ECX6555";
+    DTUserModel *kevin = [DTUserModel new];
+    kevin.userName = @"Kevin";
+    kevin.userId = @"DUHAL68180LFS6953";
+    DTUserModel *danny = [DTUserModel new];
+    danny.userName = @"Danny";
+    danny.userId = @"DUVJT93474GUY2472";
+    _teamManager.teamMembers = [[NSMutableArray alloc] initWithArray:@[al, rich, kevin, danny]];
+    
   }
   return _teamManager;
 }
@@ -281,14 +295,16 @@ static CGFloat const kDTTaskCellHeight = 50.0;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   DTTeamCollectionViewCell *cell = (DTTeamCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kDTTeamReuseIdentifier forIndexPath:indexPath];
-  cell.nameLabel.text = self.teamManager.teamMembers[indexPath.row];
+  cell.user = self.teamManager.teamMembers[indexPath.row];
+  cell.nameLabel.text = cell.user.userName;
   return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   DTTask *task = [self.projectManager.tasks lastObject];
   DTTeamCollectionViewCell *cell = (DTTeamCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-  task.assignedUser.userName = cell.nameLabel.text;
+  task.assignedUser = cell.user;
+  
   self.teamCollectionView.hidden = YES;
   [self.taskTableView reloadData];
   [self.view layoutIfNeeded];
@@ -326,7 +342,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   NSMutableArray *taskParams = [NSMutableArray new];
   for (DTTask *task in self.projectManager.tasks) {
     NSMutableDictionary *taskDict = [NSMutableDictionary new];
-    taskDict[@"user_id"] = @"DUVJT93474LOT2472";
+    taskDict[@"user_id"] = task.assignedUser.userId;
     taskDict[@"description"] = task.taskDescription;
     taskDict[@"minutes"] = @60;
     taskDict[@"estimate"] = @300;
