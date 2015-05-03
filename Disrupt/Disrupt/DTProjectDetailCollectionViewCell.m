@@ -68,7 +68,7 @@ static CGFloat const kDTMemberImageViewDiameter = 40.0;
   if (_numberLabel == nil) {
     _numberLabel = [UILabel new];
     _numberLabel.alpha = 0.88;
-    _numberLabel.font = [UIFont boldSystemFontOfSize:14.0];
+    _numberLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:14.0];
   }
   return _numberLabel;
 }
@@ -77,7 +77,7 @@ static CGFloat const kDTMemberImageViewDiameter = 40.0;
   if (_taskTitleLabel == nil) {
     _taskTitleLabel = [UILabel new];
     _taskTitleLabel.alpha = 0.72;
-    _taskTitleLabel.font = [UIFont boldSystemFontOfSize:14.0];
+    _taskTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:14.0];
     _taskTitleLabel.numberOfLines = 0;
     _taskTitleLabel.lineBreakMode = NSLineBreakByWordWrapping;
   }

@@ -51,9 +51,9 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
   NSMutableArray *doneArr = [NSMutableArray new];
   
   for (DTTask *task in self.project.projectTasks) {
-    if ([task.status isEqualToString:@"not_started"]) {
+    if ([task.status isEqualToString:@"inactive"]) {
       [inactiveArr addObject:task];
-    } else if ([task.status isEqualToString:@"in_progress"]) {
+    } else if ([task.status isEqualToString:@"started"]) {
       [startedArr addObject:task];
     } else if ([task.status isEqualToString:@"review"]) {
       [reviewArr addObject:task];
@@ -159,10 +159,12 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
     }
   }
   
-  cell.numberLabel.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
   if (isEmptyState == YES) {
+    cell.taskTitleLabel.alpha = 0.3;
     cell.taskTitleLabel.text = @"No tasks found.";
   } else {
+    cell.numberLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
+    cell.taskTitleLabel.alpha = 0.72;
     cell.taskTitleLabel.text = task.taskDescription;
   }
   
@@ -178,13 +180,13 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
   
   NSString *statusString;
   if (indexPath.section == 0) {
-    statusString = @"Not Yet Started";
+    statusString = @"NOT YET STARTED";
   } else if (indexPath.section == 1) {
-    statusString = @"In Progress";
+    statusString = @"IN PROGRESS";
   } else if (indexPath.section == 2) {
-    statusString = @"Review";
+    statusString = @"REVIEW";
   } else if (indexPath.section == 3) {
-    statusString = @"Done";
+    statusString = @"DONE";
   }
   
   header.sectionTitleLabel.text = statusString;
@@ -247,7 +249,6 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
 #pragma mark - Actions
 
 - (void)tappedLeftBarButton:(id)sender {
-  NSLog(@"tapped");
   [self.navigationController popViewControllerAnimated:YES];
 }
 
