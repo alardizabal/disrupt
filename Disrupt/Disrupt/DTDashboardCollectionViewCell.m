@@ -28,7 +28,7 @@ static CGFloat const kDTDashCellSideMarginWidth = 20.0;
   [self.contentView addSubview:self.projectNameLabel];
   [self.contentView addSubview:self.projectCompletionLabel];
   [self.contentView addSubview:self.separatorView];
-  [self randomBackgroundColor];
+//  [self randomBackgroundColor];
   return self;
 }
 
@@ -52,7 +52,7 @@ static CGFloat const kDTDashCellSideMarginWidth = 20.0;
 - (void)prepareForReuse {
   [super prepareForReuse];
 //  self.contentView.backgroundColor = [UIColor colorWithRed:30/255.0f green:144/255.0f blue:255/255.0f alpha:1.0];
-  [self backgroundColor];
+  [self randomBackgroundColor];
 }
 
 #pragma mark - Layout

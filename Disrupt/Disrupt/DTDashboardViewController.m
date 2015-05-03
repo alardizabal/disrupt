@@ -150,6 +150,21 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   DTDashboardCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDTDashboardCellReuseId forIndexPath:indexPath];
+    
+  NSUInteger r = arc4random_uniform(3);
+  
+//  UIColor *bgColor = nil;
+//  if (r == 0) {
+//    bgColor = [UIColor colorWithRed:30.0/255.0 green:144.0/255.0 blue:255.0/255.0 alpha:1.0];
+//  } else if (r == 1) {
+//    bgColor = [UIColor colorWithRed:30.0/255.0 green:255.0/255.0 blue:141.0/255.0 alpha:1.0];
+//  } else if (r == 2) {
+//    bgColor = [UIColor colorWithRed:255.0/255.0 green:30.0/255.0 blue:144.0/255.0 alpha:1.0];
+//  } else if (r == 3) {
+//    bgColor = [UIColor colorWithRed:255.0/255.0 green:141.0/255.0 blue:30.0/255.0 alpha:1.0];
+//  }
+  cell.backgroundColor = [UIColor colorWithRed:30.0/255.0 green:144.0/255.0 blue:255.0/255.0 alpha:1.0];
+  
   NSString *projNameForCell = ((DTProjectModel*)self.projects[indexPath.row]).projectName;
   NSNumber *projCompletePercent = ((DTProjectModel*)self.projects[indexPath.row]).percentComplete;
   [cell setProjectName:projNameForCell];
@@ -173,7 +188,7 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-  return 2.0;
+  return 0.0;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
