@@ -23,6 +23,11 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 
+@property (nonatomic, strong) NSArray *inactiveArray;
+@property (nonatomic, strong) NSArray *startedArray;
+@property (nonatomic, strong) NSArray *reviewArray;
+@property (nonatomic, strong) NSArray *doneArray;
+
 @end
 
 @implementation DTProjectDetailViewController
@@ -37,6 +42,31 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
   [self setupNavBar];
 }
 
+- (void)createStageArrays {
+  
+  NSMutableArray *inactiveArr = [NSMutableArray new];
+  NSMutableArray *startedArr = [NSMutableArray new];
+  NSMutableArray *reviewArr = [NSMutableArray new];
+  NSMutableArray *doneArr = [NSMutableArray new];
+  
+  for (DTTask *task in self.project.projectTasks) {
+    if ([task.status isEqualToString:@"inactive"]) {
+      [inactiveArr addObject:task];
+    } else if ([task.status isEqualToString:@"started"]) {
+      [startedArr addObject:task];
+    } else if ([task.status isEqualToString:@"review"]) {
+      [reviewArr addObject:task];
+    } else if ([task.status isEqualToString:@"done"]) {
+      [doneArr addObject:task];
+    }
+  }
+  
+  self.inactiveArray = inactiveArr;
+  self.startedArray = startedArr;
+  self.reviewArray = reviewArr;
+  self.doneArray = doneArr;
+}
+
 - (void)viewDidLayoutSubviews {
   [super viewDidLayoutSubviews];
   
@@ -47,14 +77,23 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
 }
 
 - (void)setupNavBar {
-  UIImage *settingsImage = [UIImage imageNamed:@"icon-send-airplane-normal"];
-  UIImage *settingsImagePressed = [UIImage imageNamed:@"icon-send-airplane-selected"];
-  UIButton *settingsButton = [UIButton new];
-  [settingsButton setImage:settingsImage forState:UIControlStateNormal];
-  [settingsButton setImage:settingsImagePressed forState:UIControlStateHighlighted];
-  settingsButton.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
-  [settingsButton addTarget:self action:@selector(tappedRightBarButton:) forControlEvents:UIControlEventTouchUpInside];
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingsButton];
+  UIImage *leftButtonImage = [UIImage imageNamed:@"icon-arrow-left"];
+  UIImage *leftButtonImagePressed = [UIImage imageNamed:@"icon-arrow-left"];
+  UIButton *leftButton = [UIButton new];
+  [leftButton setImage:leftButtonImage forState:UIControlStateNormal];
+  [leftButton setImage:leftButtonImagePressed forState:UIControlStateHighlighted];
+  leftButton.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
+  [leftButton addTarget:self action:@selector(tappedLeftBarButton:) forControlEvents:UIControlEventTouchUpInside];
+  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+  
+  UIImage *rightButtonImage = [UIImage imageNamed:@"icon-send-airplane-normal"];
+  UIImage *rightButtonImagePressed = [UIImage imageNamed:@"icon-send-airplane-selected"];
+  UIButton *rightButton = [UIButton new];
+  [rightButton setImage:rightButtonImage forState:UIControlStateNormal];
+  [rightButton setImage:rightButtonImagePressed forState:UIControlStateHighlighted];
+  rightButton.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
+  [rightButton addTarget:self action:@selector(tappedRightBarButton:) forControlEvents:UIControlEventTouchUpInside];
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
 }
 
 #pragma mark - Lazy init
@@ -85,9 +124,23 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   DTProjectDetailCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDTProjectDetailCellReuseId forIndexPath:indexPath];
   
-  cell.numberLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
+//  cell.numberLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
 //  cell.taskTitleLabel.text = @"This is a title text label.";
-  DTTask *task = self.project.projectTasks[indexPath.row];
+//  DTTask *task = self.project.projectTasks[indexPath.row];
+//  cell.taskTitleLabel.text = task.taskDescription;
+  
+  DTTask *task = nil;
+  
+  if (indexPath.section == 0) {
+    task = self.inactiveArray[indexPath.row];
+  } else if (indexPath.section == 1) {
+    task = self.startedArray[indexPath.row];
+  } else if (indexPath.section == 2) {
+    task = self.reviewArray[indexPath.row];
+  } else if (indexPath.section == 3) {
+    task = self.doneArray[indexPath.row];
+  }
+  
   cell.taskTitleLabel.text = task.taskDescription;
   
   return cell;
@@ -123,7 +176,33 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
 #pragma mark - Collection View Data Source
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-  return self.project.projectTasks.count;
+  if (section == 0) {
+    if (self.inactiveArray.count == 0) {
+      return 0;
+    } else {
+      return self.inactiveArray.count;
+    }
+  } else if (section == 1) {
+    if (self.startedArray.count == 0) {
+      return 0;
+    } else {
+      return self.startedArray.count;
+    }
+  } else if (section == 2) {
+    if (self.reviewArray.count == 0) {
+      return 0;
+    } else {
+      return self.reviewArray.count;
+    }
+  } else if (section == 3) {
+    if (self.doneArray.count == 0) {
+      return 0;
+    } else {
+      return self.doneArray.count;
+    }
+  }
+  return 0;
+//  return 3;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -143,6 +222,10 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
 }
 
 #pragma mark - Actions
+
+- (void)tappedLeftBarButton:(id)sender {
+  [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)tappedRightBarButton:(id)sender {
   NSLog(@"Tapped");
