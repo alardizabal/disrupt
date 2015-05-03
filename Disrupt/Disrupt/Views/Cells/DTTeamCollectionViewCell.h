@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DTUserModel.h"
 
 @interface DTTeamCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) UILabel *nameLabel;
-
+@property (nonatomic, strong) DTUserModel *user;
 @end

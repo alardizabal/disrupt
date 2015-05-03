@@ -12,6 +12,7 @@
 #import "DTProjectManager.h"
 #import "DTTeamManager.h"
 #import "DTTask.h"
+#import <AFNetworking/AFNetworking.h>
 
 static NSString * kDTTaskReuseIdentifier = @"dt.reuseId.task";
 static NSString * kDTTeamReuseIdentifier = @"dt.reuseId.team";
@@ -111,7 +112,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   [rightButton setImage:rightButtonImage forState:UIControlStateNormal];
   [rightButton setImage:rightButtonImagePressed forState:UIControlStateHighlighted];
   rightButton.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
-  [rightButton addTarget:self action:@selector(tappedRightBarButton:) forControlEvents:UIControlEventTouchUpInside];
+  [rightButton addTarget:self action:@selector(tappedSaveButton:) forControlEvents:UIControlEventTouchUpInside];
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
 }
 
@@ -204,7 +205,21 @@ static CGFloat const kDTTaskCellHeight = 50.0;
 - (DTTeamManager *)teamManager {
   if (_teamManager == nil) {
     _teamManager = [DTTeamManager sharedManager];
-    _teamManager.teamMembers = [[NSMutableArray alloc] initWithArray:@[@"Al", @"Danny", @"Kevin", @"Rich"]];
+    
+    DTUserModel *al = [DTUserModel new];
+    al.userName = @"Al";
+    al.userId = @"DUVJT93474LOT2472";
+    DTUserModel *rich = [DTUserModel new];
+    rich.userName = @"Rich";
+    rich.userId = @"DUDTI75445ECX6555";
+    DTUserModel *kevin = [DTUserModel new];
+    kevin.userName = @"Kevin";
+    kevin.userId = @"DUHAL68180LFS6953";
+    DTUserModel *danny = [DTUserModel new];
+    danny.userName = @"Danny";
+    danny.userId = @"DUVJT93474GUY2472";
+    _teamManager.teamMembers = [[NSMutableArray alloc] initWithArray:@[al, rich, kevin, danny]];
+    
   }
   return _teamManager;
 }
@@ -223,7 +238,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
   NSInteger rowCount = [tableView numberOfRowsInSection:indexPath.section];
   NSInteger taskNumber = rowCount - indexPath.row - 1;
   cell.taskDesciptionTextView.delegate = self;
-  cell.taskNumberLabel.text = [NSString stringWithFormat:@"%li", taskNumber + 1];
+  cell.taskNumberLabel.text = [NSString stringWithFormat:@"%ld", taskNumber + 1];
   if (indexPath.row == 0) {
     cell.taskDesciptionTextView.userInteractionEnabled = YES;
     cell.taskDesciptionTextView.text = @"";
@@ -318,14 +333,16 @@ static CGFloat const kDTTaskCellHeight = 50.0;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   DTTeamCollectionViewCell *cell = (DTTeamCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:kDTTeamReuseIdentifier forIndexPath:indexPath];
-  cell.nameLabel.text = self.teamManager.teamMembers[indexPath.row];
+  cell.user = self.teamManager.teamMembers[indexPath.row];
+  cell.nameLabel.text = cell.user.userName;
   return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
   DTTask *task = [self.projectManager.tasks lastObject];
   DTTeamCollectionViewCell *cell = (DTTeamCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-  task.assignedUser.userName = cell.nameLabel.text;
+  task.assignedUser = cell.user;
+  
   self.teamCollectionView.hidden = YES;
   [self.taskTableView reloadData];
   [self.view layoutIfNeeded];
@@ -349,15 +366,46 @@ static CGFloat const kDTTaskCellHeight = 50.0;
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
   return 0.0;
 }
+  
+#pragma mark - Network Tasks
+
+- (void)postNewProject {
+  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  manager.requestSerializer = [AFJSONRequestSerializer serializer];
+  
+  NSString *URLString = @"http://api.localhost.local:3040/projects/create";
+  NSMutableDictionary *payload = [NSMutableDictionary new];
+  NSDictionary *project = @{@"title" : self.projectNameTextField.text};
+  payload[@"project"] = project;
+  NSMutableArray *taskParams = [NSMutableArray new];
+  for (DTTask *task in self.projectManager.tasks) {
+    NSMutableDictionary *taskDict = [NSMutableDictionary new];
+    taskDict[@"user_id"] = task.assignedUser.userId;
+    taskDict[@"description"] = task.taskDescription;
+    taskDict[@"minutes"] = @60;
+    taskDict[@"estimate"] = @300;
+    taskDict[@"status"] = @"not_started";
+    [taskParams addObject:taskDict];
+  }
+  payload[@"tasks"] = taskParams;
+  
+  [manager POST:URLString parameters:payload
+        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@"JSON: %@", responseObject);
+  }
+        failure:
+   ^(AFHTTPRequestOperation *operation, NSError *error) {
+     NSLog(@"Error: %@", error);
+   }];
+}
 
 #pragma mark - Actions
-
 - (void)tappedLeftBarButton:(id)sender {
   [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)tappedRightBarButton:(id)sender {
-  
+- (void)tappedSaveButton:(id)sender {
+  [self postNewProject];
 }
 
 @end

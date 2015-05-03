@@ -114,7 +114,9 @@ static CGFloat const kDTDashCellSideMarginWidth = 20.0;
 
 #pragma mark - Setters
 - (void)setProjectName:(NSString *)name {
-  
+  if (name == nil) {
+    name = @"UNNAMED";
+  }
   _projectNameLabel.attributedText = [[NSAttributedString alloc] initWithString:name attributes:[self projectNameLabelAttributes]];
 }
 

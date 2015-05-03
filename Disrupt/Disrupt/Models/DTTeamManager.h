@@ -12,5 +12,4 @@
 
 + (instancetype)sharedManager;
 @property (nonatomic, strong) NSMutableArray *teamMembers;
-
 @end
