@@ -8,6 +8,8 @@
 
 #import "DTDashboardCollectionViewCell.h"
 
+static CGFloat const kDTDashCellSideMarginWidth = 10.0;
+
 @interface DTDashboardCollectionViewCell ()
 @property (nonatomic, strong) UILabel *projectNameLabel;
 @property (nonatomic, strong) UILabel *projectCompletionLabel;
@@ -34,11 +36,11 @@
 - (void)layoutSubviews {
   [super layoutSubviews];
   CGFloat x, y, w, h = 0.0;
-  x = 0.0, y = 0.0, w = CGRectGetWidth(self.contentView.bounds), h = CGRectGetHeight(self.contentView.bounds);
-  self.projectNameLabel.frame = CGRectMake(0.0, 0.0, w, h);
+  x = kDTDashCellSideMarginWidth, y = 0.0, w = CGRectGetWidth(self.contentView.bounds), h = CGRectGetHeight(self.contentView.bounds);
+  self.projectNameLabel.frame = CGRectMake(x, 0.0, w, h);
   [self.projectCompletionLabel sizeToFit];
   w = CGRectGetWidth(self.projectCompletionLabel.bounds);
-  x = CGRectGetWidth(self.contentView.bounds) - w;
+  x = CGRectGetWidth(self.contentView.bounds) - w - kDTDashCellSideMarginWidth;
   self.projectCompletionLabel.frame = CGRectMake(x, y, w, h);
 }
 
@@ -47,6 +49,7 @@
 - (UILabel *)projectNameLabel {
   if (_projectNameLabel == nil) {
     _projectNameLabel = [UILabel new];
+    _projectNameLabel.attributedText = [[NSAttributedString alloc] initWithString:@"" attributes:[self projectNameLabelAttributes]];
   }
   return _projectNameLabel;
 }
@@ -58,9 +61,17 @@
   return _projectCompletionLabel;
 }
 
+#pragma mark - Code Tidiness Helpers
+- (NSDictionary *) projectNameLabelAttributes {
+  return @{
+            NSFontAttributeName: [UIFont fontWithName:@"MarkerFelt-Wide" size:18]
+          };
+}
+
 #pragma mark - Setters
 - (void)setProjectName:(NSString *)name {
-  _projectNameLabel.text = name;
+  
+  _projectNameLabel.attributedText = [[NSAttributedString alloc] initWithString:name attributes:[self projectNameLabelAttributes]];
 }
 
 - (void)setProjectPercentage:(NSNumber *)value {

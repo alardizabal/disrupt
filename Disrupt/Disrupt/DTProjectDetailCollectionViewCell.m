@@ -76,7 +76,7 @@ static CGFloat const kDTMemberImageViewDiameter = 40.0;
 - (UILabel *)taskTitleLabel {
   if (_taskTitleLabel == nil) {
     _taskTitleLabel = [UILabel new];
-    _taskTitleLabel.alpha = 0.78;
+    _taskTitleLabel.alpha = 0.72;
     _taskTitleLabel.font = [UIFont boldSystemFontOfSize:14.0];
   }
   return _taskTitleLabel;
@@ -96,7 +96,7 @@ static CGFloat const kDTMemberImageViewDiameter = 40.0;
 - (UIView *)memberBackgroundView {
   if (_memberBackgroundView == nil) {
     _memberBackgroundView = [UIView new];
-    _memberBackgroundView.backgroundColor = [UIColor whiteColor];
+    _memberBackgroundView.backgroundColor = [UIColor blackColor];
     _memberBackgroundView.layer.cornerRadius = (kDTMemberImageViewDiameter + kDTPhotoBorderWidth * 2.0) / 2.0;
   }
   return _memberBackgroundView;

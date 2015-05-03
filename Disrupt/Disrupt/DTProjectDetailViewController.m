@@ -28,7 +28,11 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
 - (void)viewDidLoad {
   [super viewDidLoad];
   
+  self.title = self.project.projectName;
+  
   [self.view addSubview:self.collectionView];
+  
+  [self setupNavBar];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -38,6 +42,17 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
   
   x = 0.0, y = -10.0, w = self.view.bounds.size.width, h = self.view.bounds.size.height;
   self.collectionView.frame = CGRectMake(x, y, w, h);
+}
+
+- (void)setupNavBar {
+  UIImage *settingsImage = [UIImage imageNamed:@"icon-send-airplane-normal"];
+  UIImage *settingsImagePressed = [UIImage imageNamed:@"icon-send-airplane-selected"];
+  UIButton *settingsButton = [UIButton new];
+  [settingsButton setImage:settingsImage forState:UIControlStateNormal];
+  [settingsButton setImage:settingsImagePressed forState:UIControlStateHighlighted];
+  settingsButton.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
+  [settingsButton addTarget:self action:@selector(tappedRightBarButton:) forControlEvents:UIControlEventTouchUpInside];
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingsButton];
 }
 
 #pragma mark - Lazy init
@@ -68,7 +83,6 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
   DTProjectDetailCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kDTProjectDetailCellReuseId forIndexPath:indexPath];
   
-  cell.contentView.backgroundColor = [UIColor cyanColor];
   cell.numberLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
   cell.taskTitleLabel.text = @"This is a title text label.";
   
@@ -123,6 +137,12 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
   return 0.0;
+}
+
+#pragma mark - Actions
+
+- (void)tappedRightBarButton:(id)sender {
+  NSLog(@"Tapped");
 }
 
 @end

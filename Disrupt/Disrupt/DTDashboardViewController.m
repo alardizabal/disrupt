@@ -133,6 +133,7 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   NSData *data = [NSURLConnection sendSynchronousRequest:request
                                        returningResponse:nil error:nil];
   NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+  NSLog(@"%@", json);
   NSArray *projects = json[@"response"][@"data"][@"projects"];
   for (NSDictionary *project in projects) {
     DTProjectModel *projModel = [[DTProjectModel alloc] initWithJSONData:project];
@@ -162,11 +163,15 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-  NSString *projNameForCell = ((DTProjectModel*)self.projects[indexPath.row]).projectName;
+  DTProjectModel *proj = self.projects[indexPath.row];
   
   DTProjectDetailViewController *vc = [DTProjectDetailViewController new];
+  vc.project = proj;
   [self.navigationController pushViewController:vc animated:YES];
-  NSLog(@"%@",projNameForCell);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+  return 2.0;
 }
 
 #pragma mark - Navigation Actions

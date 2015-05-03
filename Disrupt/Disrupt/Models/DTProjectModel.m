@@ -14,6 +14,7 @@
 - (id)initWithJSONData:(NSDictionary *)jsonData {
   self = [super init];
   if (self) {
+    self.projectTasks = [NSMutableArray new];
     self.projectId = jsonData[@"id"];
     self.projectName = jsonData[@"title"];
     NSArray *projectTasks = jsonData[@"tasks"];
@@ -25,4 +26,5 @@
   }
   return self;
 }
+
 @end
