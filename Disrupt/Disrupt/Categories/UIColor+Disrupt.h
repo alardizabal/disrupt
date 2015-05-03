@@ -13,5 +13,6 @@
 + (UIColor *)dtBlueColor;
 + (UIColor *)dtGoldColor;
 + (UIColor *)dtGrayColor;
++ (UIColor *)dtPinkColor;
 
 @end

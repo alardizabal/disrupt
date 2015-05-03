@@ -14,6 +14,7 @@
   self = [super initWithFrame:frame];
   if (self) {
     [self.contentView addSubview:self.nameLabel];
+    self.backgroundColor = [UIColor dtPinkColor];
   }
   return self;
 }
@@ -29,11 +30,21 @@
 - (UILabel *)nameLabel {
   if (_nameLabel == nil) {
     _nameLabel = [UILabel new];
-    _nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20.0];
+    _nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:28.0];
     _nameLabel.textColor = [UIColor whiteColor];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
   }
   return _nameLabel;
+}
+
+- (void)setHighlighted:(BOOL)highlighted {
+  if (highlighted) {
+    self.nameLabel.textColor = [UIColor dtPinkColor];
+    self.backgroundColor = [UIColor whiteColor];
+  } else {
+    self.nameLabel.textColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor dtPinkColor];
+  }
 }
 
 @end

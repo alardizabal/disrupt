@@ -19,6 +19,10 @@
   return [UIColor colorWithRed:231/255.0f green:198/255.0f blue:151/255.0f alpha:1.0];
 }
 
++ (UIColor *)dtPinkColor {
+  return [UIColor colorWithRed:255/255.0f green:30/255.0f blue:144/255.0f alpha:1.0];
+}
+
 + (UIColor *)dtGrayColor {
   return [UIColor lightGrayColor];
 }
