@@ -162,7 +162,7 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
   if (isEmptyState == YES) {
     cell.taskTitleLabel.alpha = 0.3;
     cell.taskTitleLabel.text = @"No tasks found";
-    cell.taskTitleLabel.textAlignment = NSTextAlignmentCenter;
+//    cell.taskTitleLabel.textAlignment = NSTextAlignmentCenter;
     cell.taskTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:24.0];
     cell.memberBackgroundView.hidden = YES;
     cell.timeLabel.hidden = YES;
