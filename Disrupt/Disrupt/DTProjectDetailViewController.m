@@ -163,7 +163,42 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
     cell.taskTitleLabel.alpha = 0.3;
     cell.taskTitleLabel.text = @"No tasks found.";
     cell.memberBackgroundView.hidden = YES;
+    cell.timeLabel.hidden = YES;
   } else {
+    
+    cell.timeLabel.hidden = NO;
+    
+    NSString *minutesString = nil;
+    NSString *estimateString = nil;
+    
+    if ([task.minutes integerValue] >= 60) {
+      NSInteger hours = [task.minutes integerValue] / 60;
+      NSInteger minutes = [task.minutes integerValue] % 60;
+      
+      if (minutes == 0) {
+        minutesString = [NSString stringWithFormat:@"%ldh", (long)hours];
+      } else {
+        minutesString = [NSString stringWithFormat:@"%ldh%ldm", (long)hours, (long)minutes];
+      }
+    } else {
+      minutesString = [NSString stringWithFormat:@"%ldm", [task.minutes integerValue]];
+    }
+    
+    if ([task.estimate integerValue] >= 60) {
+      NSInteger hours = [task.estimate integerValue] / 60;
+      NSInteger minutes = [task.minutes integerValue] % 60;
+      
+      if (minutes == 0) {
+        estimateString = [NSString stringWithFormat:@"%ldh", (long)hours];
+      } else {
+        estimateString = [NSString stringWithFormat:@"%ldh%ldm", (long)hours, (long)minutes];
+      }
+    } else {
+      estimateString = [NSString stringWithFormat:@"%ldm", [task.estimate integerValue]];
+    }
+    
+    cell.timeLabel.text = [NSString stringWithFormat:@"%@/%@", minutesString, estimateString];
+    
     cell.numberLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
     cell.taskTitleLabel.alpha = 0.72;
     cell.taskTitleLabel.text = task.taskDescription;

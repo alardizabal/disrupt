@@ -24,6 +24,7 @@ static CGFloat const kDTMemberImageViewDiameter = 40.0;
   self = [super initWithFrame:frame];
   if (self) {
     [self.contentView addSubview:self.numberLabel];
+    [self.contentView addSubview:self.timeLabel];
     [self.contentView addSubview:self.taskTitleLabel];
     [self.contentView addSubview:self.memberBackgroundView];
     [self.memberBackgroundView addSubview:self.memberImageView];
@@ -41,14 +42,22 @@ static CGFloat const kDTMemberImageViewDiameter = 40.0;
   
   CGFloat x = 0.0, y = 0.0, w = 0.0, h = 0.0;
   
-  x = kDTHorizontalInset, y = 0.0,
-  w = 10.0, h = self.contentView.frame.size.height;
+  x = 10.0, y = 0.0,
+  w = 50.0, h = self.contentView.frame.size.height / 2.0;
   self.numberLabel.frame = CGRectMake(x, y, w, h);
   
-  x += 25.0, w = self.contentView.bounds.size.width - kDTMemberImageViewDiameter - kDTPhotoBorderWidth * 2 - kDTHorizontalInset * 2 - x,
+  x = 10.0,
+  y = self.contentView.frame.size.height * 0.7 - 7.0,
+  w = 50.0, h = 14.0;
+  self.timeLabel.frame = CGRectMake(x, y, w, h);
+  
+  x = CGRectGetMaxX(self.timeLabel.frame) + 10.0,
+  y = 0.0, h = self.contentView.frame.size.height,
+//  x = kDTHorizontalInset + 25.0
+  w = self.contentView.bounds.size.width - kDTMemberImageViewDiameter - kDTPhotoBorderWidth * 2 - kDTHorizontalInset - x,
   self.taskTitleLabel.frame = CGRectMake(x, y, w, h);
   
-  x = self.contentView.bounds.size.width - kDTHorizontalInset - kDTMemberImageViewDiameter - kDTPhotoBorderWidth * 2.0,
+  x = self.contentView.bounds.size.width - kDTMemberImageViewDiameter - 10.0,
   y = CGRectGetMidY(self.contentView.frame) - (kDTMemberImageViewDiameter - kDTPhotoBorderWidth) / 2.0,
   w = kDTMemberImageViewDiameter + kDTPhotoBorderWidth * 2.0,
   h = w;
@@ -67,9 +76,26 @@ static CGFloat const kDTMemberImageViewDiameter = 40.0;
   if (_numberLabel == nil) {
     _numberLabel = [UILabel new];
     _numberLabel.alpha = 0.88;
+    _numberLabel.textAlignment = NSTextAlignmentCenter;
     _numberLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:14.0];
   }
   return _numberLabel;
+}
+
+- (UILabel *)timeLabel {
+  if (_timeLabel == nil) {
+    _timeLabel = [UILabel new];
+    _timeLabel.backgroundColor = [UIColor blackColor];
+    _timeLabel.layer.cornerRadius = 6.0;
+    _timeLabel.clipsToBounds = YES;
+    _timeLabel.alpha = 0.88;
+    _timeLabel.hidden = YES;
+    _timeLabel.textAlignment = NSTextAlignmentCenter;
+//    _timeLabel.textColor = [UIColor colorWithRed:30.0/255.0 green:255.0/255.0 blue:141.0/255.0 alpha:1.0];
+    _timeLabel.textColor = [UIColor whiteColor];
+    _timeLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:9.0];
+  }
+  return _timeLabel;
 }
 
 - (UILabel *)taskTitleLabel {
