@@ -16,6 +16,8 @@
     self.taskId = jsonData[@"id"];
     self.status = jsonData[@"status"];
     NSDictionary *userData = jsonData[@"user"];
+    self.minutes = jsonData[@"minutes"];
+    self.estimate = jsonData[@"estimate"];
     self.assignedUser = [[DTUserModel alloc] initWithJSONData:userData];
   }
   return self;
