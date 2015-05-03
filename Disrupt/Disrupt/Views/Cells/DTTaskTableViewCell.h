@@ -10,7 +10,7 @@
 
 @interface DTTaskTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UITextField *taskTextField;
+@property (nonatomic, strong) UITextView *taskTextView;
 @property (nonatomic, strong) UILabel *teamMemberLabel;
 
 @end
