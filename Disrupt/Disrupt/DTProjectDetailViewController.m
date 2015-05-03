@@ -50,9 +50,9 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
   NSMutableArray *doneArr = [NSMutableArray new];
   
   for (DTTask *task in self.project.projectTasks) {
-    if ([task.status isEqualToString:@"inactive"]) {
+    if ([task.status isEqualToString:@"non_started"]) {
       [inactiveArr addObject:task];
-    } else if ([task.status isEqualToString:@"started"]) {
+    } else if ([task.status isEqualToString:@"in_progress"]) {
       [startedArr addObject:task];
     } else if ([task.status isEqualToString:@"review"]) {
       [reviewArr addObject:task];
@@ -82,7 +82,7 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
   UIButton *leftButton = [UIButton new];
   [leftButton setImage:leftButtonImage forState:UIControlStateNormal];
   [leftButton setImage:leftButtonImagePressed forState:UIControlStateHighlighted];
-  leftButton.frame = CGRectMake(0.0, 0.0, 30.0, 30.0);
+  leftButton.frame = CGRectMake(0.0, 0.0, 10.0, 20.0);
   [leftButton addTarget:self action:@selector(tappedLeftBarButton:) forControlEvents:UIControlEventTouchUpInside];
   self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
   
@@ -129,19 +129,40 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
 //  DTTask *task = self.project.projectTasks[indexPath.row];
 //  cell.taskTitleLabel.text = task.taskDescription;
   
+  BOOL isEmptyState = NO;
   DTTask *task = nil;
   
   if (indexPath.section == 0) {
-    task = self.inactiveArray[indexPath.row];
+    if (self.inactiveArray.count == 0) {
+      isEmptyState = YES;
+    } else {
+      task = self.inactiveArray[indexPath.row];
+    }
   } else if (indexPath.section == 1) {
-    task = self.startedArray[indexPath.row];
+    if (self.startedArray.count == 0) {
+      isEmptyState = YES;
+    } else {
+      task = self.startedArray[indexPath.row];
+    }
   } else if (indexPath.section == 2) {
-    task = self.reviewArray[indexPath.row];
+    if (self.reviewArray.count == 0) {
+      isEmptyState = YES;
+    } else {
+      task = self.reviewArray[indexPath.row];
+    }
   } else if (indexPath.section == 3) {
-    task = self.doneArray[indexPath.row];
+    if (self.doneArray.count == 0) {
+      isEmptyState = YES;
+    } else {
+      task = self.doneArray[indexPath.row];
+    }
   }
   
-  cell.taskTitleLabel.text = task.taskDescription;
+  if (isEmptyState == YES) {
+    cell.taskTitleLabel.text = @"No tasks found.";
+  } else {
+    cell.taskTitleLabel.text = task.taskDescription;
+  }
   
   return cell;
 }
@@ -178,30 +199,30 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
   if (section == 0) {
     if (self.inactiveArray.count == 0) {
-      return 0;
+      return 1;
     } else {
       return self.inactiveArray.count;
     }
   } else if (section == 1) {
     if (self.startedArray.count == 0) {
-      return 0;
+      return 1;
     } else {
       return self.startedArray.count;
     }
   } else if (section == 2) {
     if (self.reviewArray.count == 0) {
-      return 0;
+      return 1;
     } else {
       return self.reviewArray.count;
     }
   } else if (section == 3) {
     if (self.doneArray.count == 0) {
-      return 0;
+      return 1;
     } else {
       return self.doneArray.count;
     }
   }
-  return 0;
+  return 1;
 //  return 3;
 }
 
@@ -224,6 +245,7 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
 #pragma mark - Actions
 
 - (void)tappedLeftBarButton:(id)sender {
+  NSLog(@"tapped");
   [self.navigationController popViewControllerAnimated:YES];
 }
 
