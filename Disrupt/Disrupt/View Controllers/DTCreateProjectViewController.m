@@ -384,7 +384,7 @@ static CGFloat const kDTTaskCellHeight = 50.0;
     taskDict[@"description"] = task.taskDescription;
     taskDict[@"minutes"] = @60;
     taskDict[@"estimate"] = @300;
-    taskDict[@"status"] = @"not_started";
+    taskDict[@"status"] = @"inactive";
     [taskParams addObject:taskDict];
   }
   payload[@"tasks"] = taskParams;
