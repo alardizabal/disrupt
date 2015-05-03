@@ -8,7 +8,7 @@
 
 #import "DTDashboardViewController.h"
 #import "DTDashboardCollectionViewCell.h"
-#import "DTProjectPreviewModel.h"
+#import "DTProjectModel.h"
 #import "DTCreateProjectViewController.h"
 #import "DTProjectDetailViewController.h"
 
@@ -30,9 +30,9 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   self.navigationItem.title = @"Disrupt";
   [self addLeftNavigationButton];
   [self addRightNavigationButton];
-  [self createTestProjects];
   
   [self.view addSubview:self.projectCollectionView];
+  [self requestProjects];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,8 +64,8 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 }
 
 - (void) addRightNavigationButton {
-  UIImage *settingsImage = [UIImage imageNamed:@"icon_plus"];
-  UIImage *settingsImagePressed = [UIImage imageNamed:@"icon_plus"];
+  UIImage *settingsImage = [UIImage imageNamed:@"icon-pluscircle-normal"];
+  UIImage *settingsImagePressed = [UIImage imageNamed:@"icon-pluscircle-selected"];
   UIButton *settingsButton = [UIButton new];
   [settingsButton setImage:settingsImage forState:UIControlStateNormal];
   [settingsButton setImage:settingsImagePressed forState:UIControlStateHighlighted];
@@ -108,22 +108,37 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 
 #pragma mark - Testing Functions 
 - (void) createTestProjects {
-  DTProjectPreviewModel *tasteTracker = [DTProjectPreviewModel new];
+  DTProjectModel *tasteTracker = [DTProjectModel new];
   tasteTracker.projectName = @"TasteTracker";
   tasteTracker.percentComplete = @69;
-  DTProjectPreviewModel *babbygooroo = [DTProjectPreviewModel new];
+  DTProjectModel *babbygooroo = [DTProjectModel new];
   babbygooroo.projectName = @"Baby GooRoo";
   babbygooroo.percentComplete = @90;
-  DTProjectPreviewModel *shoptiques = [DTProjectPreviewModel new];
+  DTProjectModel *shoptiques = [DTProjectModel new];
   shoptiques.projectName = @"Shoptiques";
   shoptiques.percentComplete = @100;
-  DTProjectPreviewModel *briq = [DTProjectPreviewModel new];
+  DTProjectModel *briq = [DTProjectModel new];
   briq.projectName = @"BRIQ";
   briq.percentComplete = @100;
-  DTProjectPreviewModel *hypeWriter = [DTProjectPreviewModel new];
+  DTProjectModel *hypeWriter = [DTProjectModel new];
   hypeWriter.projectName = @"HypeWriter";
   hypeWriter.percentComplete = @76;
   self.projects = [[NSMutableArray alloc] initWithArray:@[tasteTracker, babbygooroo, shoptiques, hypeWriter, briq]];
+}
+
+#pragma mark - Network Calls
+- (void) requestProjects {
+  NSString *URLStr = @"http://api.localhost.local:3040/dashboard";
+  NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:URLStr]];
+  NSData *data = [NSURLConnection sendSynchronousRequest:request
+                                       returningResponse:nil error:nil];
+  NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+  NSLog(@"%@", json);
+  NSArray *projects = json[@"response"][@"data"][@"projects"];
+  for (NSDictionary *project in projects) {
+    DTProjectModel *projModel = [[DTProjectModel alloc] initWithJSONData:project];
+    [self.projects addObject:projModel];
+  }
 }
 
 #pragma mark - UICollectionViewDelegates
@@ -136,8 +151,8 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
   DTDashboardCollectionViewCell *cell =
   [collectionView dequeueReusableCellWithReuseIdentifier:kDTDashboardCellReuseId
                                             forIndexPath:indexPath];
-  NSString *projNameForCell = ((DTProjectPreviewModel*)self.projects[indexPath.row]).projectName;
-  NSNumber *projCompletePercent = ((DTProjectPreviewModel*)self.projects[indexPath.row]).percentComplete;
+  NSString *projNameForCell = ((DTProjectModel*)self.projects[indexPath.row]).projectName;
+  NSNumber *projCompletePercent = ((DTProjectModel*)self.projects[indexPath.row]).percentComplete;
   [cell setProjectName:projNameForCell];
   [cell setProjectPercentage:projCompletePercent];
   return cell;
@@ -148,11 +163,15 @@ static NSString * const kDTDashboardCellReuseId = @"_dt.reuse.dashboardCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-  NSString *projNameForCell = ((DTProjectPreviewModel*)self.projects[indexPath.row]).projectName;
+  DTProjectModel *proj = self.projects[indexPath.row];
   
   DTProjectDetailViewController *vc = [DTProjectDetailViewController new];
+  vc.project = proj;
   [self.navigationController pushViewController:vc animated:YES];
-  NSLog(@"%@",projNameForCell);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+  return 2.0;
 }
 
 #pragma mark - Navigation Actions

@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DTUserModel.h"
 
 @interface DTTask : NSObject
-
-@property (nonatomic, strong) NSString *teamMember;
+- (id)initWithJSONData:(NSDictionary *)jsonData;
+@property (nonatomic, strong) DTUserModel *assignedUser;
 @property (nonatomic, strong) NSString *status;
 @property (nonatomic, strong) NSString *taskDescription;
-
+@property (nonatomic, strong) NSString *taskId;
 @end
