@@ -19,7 +19,8 @@ static const CGFloat kDTHorizontalPadding = 15.0;
 - (instancetype)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
-    self.backgroundColor = [UIColor colorWithRed:30/255.0f green:144/255.0f blue:255/255.0f alpha:1.0];
+//    self.backgroundColor = [UIColor colorWithRed:30/255.0f green:144/255.0f blue:255/255.0f alpha:1.0];
+    self.backgroundColor = [UIColor grayColor];
     [self addSubview:self.sectionTitleLabel];
   }
   return self;
