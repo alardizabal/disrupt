@@ -34,7 +34,7 @@ static NSString * const kDTProjectDetailSectionReuseId = @"_dt.reuse.projectDeta
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  self.title = self.project.projectName;
+  self.title = [self.project.projectName uppercaseString];
   
   [self.view addSubview:self.collectionView];
   
