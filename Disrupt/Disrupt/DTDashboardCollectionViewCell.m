@@ -65,7 +65,7 @@ static CGFloat const kDTDashCellSideMarginWidth = 20.0;
   
   y = -4.0,
   w = CGRectGetWidth(self.projectCompletionLabel.bounds);
-  x = fullWidth - 80.0 - kDTDashCellSideMarginWidth;
+  x = fullWidth - 75.0 - kDTDashCellSideMarginWidth;
   self.projectCompletionLabel.frame = CGRectMake(x, y, 80.0, h);
   
   x = 0.0, y = CGRectGetMaxY(self.contentView.frame) - 3.0;
