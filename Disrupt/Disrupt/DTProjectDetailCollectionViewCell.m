@@ -43,12 +43,12 @@ static CGFloat const kDTMemberImageViewDiameter = 40.0;
   CGFloat x = 0.0, y = 0.0, w = 0.0, h = 0.0;
   
   x = 10.0, y = 0.0,
-  w = 50.0, h = self.contentView.frame.size.height / 2.0;
+  w = 60.0, h = self.contentView.frame.size.height / 2.0;
   self.numberLabel.frame = CGRectMake(x, y, w, h);
   
   x = 10.0,
-  y = self.contentView.frame.size.height * 0.7 - 7.0,
-  w = 50.0, h = 14.0;
+  y = self.contentView.frame.size.height * 0.65 - 11.0,
+  w = 60.0, h = 22.0;
   self.timeLabel.frame = CGRectMake(x, y, w, h);
   
   x = CGRectGetMaxX(self.timeLabel.frame) + 10.0,
@@ -86,14 +86,14 @@ static CGFloat const kDTMemberImageViewDiameter = 40.0;
   if (_timeLabel == nil) {
     _timeLabel = [UILabel new];
     _timeLabel.backgroundColor = [UIColor blackColor];
-    _timeLabel.layer.cornerRadius = 6.0;
+    _timeLabel.layer.cornerRadius = 11.0;
     _timeLabel.clipsToBounds = YES;
     _timeLabel.alpha = 0.88;
     _timeLabel.hidden = YES;
     _timeLabel.textAlignment = NSTextAlignmentCenter;
 //    _timeLabel.textColor = [UIColor colorWithRed:30.0/255.0 green:255.0/255.0 blue:141.0/255.0 alpha:1.0];
     _timeLabel.textColor = [UIColor whiteColor];
-    _timeLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:9.0];
+    _timeLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:11.0];
   }
   return _timeLabel;
 }
